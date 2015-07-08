@@ -8,6 +8,13 @@
 
 /* Begin PBXBuildFile section */
 		6D9A52CC1B4DA524002F911B /* QuotesListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D9A52CB1B4DA524002F911B /* QuotesListViewController.swift */; };
+		6DBDA9E31B4DBA4400109CAD /* Quotes_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DBDA9E21B4DBA4400109CAD /* Quotes_Tests.swift */; };
+		6DBDA9EA1B4DBA9B00109CAD /* Nimble.framework in Resources */ = {isa = PBXBuildFile; fileRef = 6DF150181B4DB9D300E23D9C /* Nimble.framework */; };
+		6DBDA9EB1B4DBA9B00109CAD /* Quick.framework in Resources */ = {isa = PBXBuildFile; fileRef = 6DF150151B4DB8C800E23D9C /* Quick.framework */; };
+		6DBDA9EC1B4DBAC700109CAD /* Nimble.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6DF150181B4DB9D300E23D9C /* Nimble.framework */; };
+		6DBDA9ED1B4DBAC700109CAD /* Quick.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6DF150151B4DB8C800E23D9C /* Quick.framework */; };
+		6DBDA9F21B4DBDA600109CAD /* QuoteSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DBDA9F11B4DBDA600109CAD /* QuoteSpec.swift */; };
+		6DBDA9F71B4DBE9E00109CAD /* QuoteTableViewCellViewModelSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DBDA9F61B4DBE9E00109CAD /* QuoteTableViewCellViewModelSpec.swift */; };
 		6DD3E70A1B4D927F0094CFA3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DD3E7091B4D927F0094CFA3 /* AppDelegate.swift */; };
 		6DD3E70F1B4D927F0094CFA3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6DD3E70D1B4D927F0094CFA3 /* Main.storyboard */; };
 		6DD3E7111B4D927F0094CFA3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6DD3E7101B4D927F0094CFA3 /* Assets.xcassets */; };
@@ -17,8 +24,23 @@
 		6DD3E7241B4D9C3D0094CFA3 /* QuoteTableViewCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DD3E7231B4D9C3D0094CFA3 /* QuoteTableViewCellViewModel.swift */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		6DBDA9E51B4DBA4400109CAD /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 6DD3E6FE1B4D927F0094CFA3 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 6DD3E7051B4D927F0094CFA3;
+			remoteInfo = Quotes;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
 		6D9A52CB1B4DA524002F911B /* QuotesListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuotesListViewController.swift; sourceTree = "<group>"; };
+		6DBDA9E01B4DBA4400109CAD /* Quotes Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Quotes Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		6DBDA9E21B4DBA4400109CAD /* Quotes_Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Quotes_Tests.swift; sourceTree = "<group>"; };
+		6DBDA9E41B4DBA4400109CAD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		6DBDA9F11B4DBDA600109CAD /* QuoteSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuoteSpec.swift; sourceTree = "<group>"; };
+		6DBDA9F61B4DBE9E00109CAD /* QuoteTableViewCellViewModelSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuoteTableViewCellViewModelSpec.swift; sourceTree = "<group>"; };
 		6DD3E7061B4D927F0094CFA3 /* Quotes.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Quotes.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6DD3E7091B4D927F0094CFA3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		6DD3E70E1B4D927F0094CFA3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -28,9 +50,20 @@
 		6DD3E71C1B4D92F20094CFA3 /* QuoteTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuoteTableViewCell.swift; sourceTree = "<group>"; };
 		6DD3E7201B4D93B30094CFA3 /* Quote.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Quote.swift; sourceTree = "<group>"; };
 		6DD3E7231B4D9C3D0094CFA3 /* QuoteTableViewCellViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuoteTableViewCellViewModel.swift; sourceTree = "<group>"; };
+		6DF150151B4DB8C800E23D9C /* Quick.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Quick.framework; path = Carthage/Build/iOS/Quick.framework; sourceTree = "<group>"; };
+		6DF150181B4DB9D300E23D9C /* Nimble.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Nimble.framework; path = Carthage/Build/iOS/Nimble.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		6DBDA9DD1B4DBA4400109CAD /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6DBDA9EC1B4DBAC700109CAD /* Nimble.framework in Frameworks */,
+				6DBDA9ED1B4DBAC700109CAD /* Quick.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		6DD3E7031B4D927F0094CFA3 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -41,10 +74,74 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		6D1F45ED1B4DB230005820CC /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				6DF150181B4DB9D300E23D9C /* Nimble.framework */,
+				6DF150151B4DB8C800E23D9C /* Quick.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		6DBDA9E11B4DBA4400109CAD /* Quotes Tests */ = {
+			isa = PBXGroup;
+			children = (
+				6DBDA9F31B4DBE6A00109CAD /* Features */,
+				6DBDA9EF1B4DBD9000109CAD /* Services */,
+				6DBDA9E21B4DBA4400109CAD /* Quotes_Tests.swift */,
+				6DBDA9E41B4DBA4400109CAD /* Info.plist */,
+			);
+			path = "Quotes Tests";
+			sourceTree = "<group>";
+		};
+		6DBDA9EF1B4DBD9000109CAD /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				6DBDA9F01B4DBD9500109CAD /* Model */,
+			);
+			name = Services;
+			sourceTree = "<group>";
+		};
+		6DBDA9F01B4DBD9500109CAD /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				6DBDA9F11B4DBDA600109CAD /* QuoteSpec.swift */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		6DBDA9F31B4DBE6A00109CAD /* Features */ = {
+			isa = PBXGroup;
+			children = (
+				6DBDA9F41B4DBE7000109CAD /* Quotes List */,
+			);
+			name = Features;
+			sourceTree = "<group>";
+		};
+		6DBDA9F41B4DBE7000109CAD /* Quotes List */ = {
+			isa = PBXGroup;
+			children = (
+				6DBDA9F61B4DBE9E00109CAD /* QuoteTableViewCellViewModelSpec.swift */,
+			);
+			name = "Quotes List";
+			sourceTree = "<group>";
+		};
+		6DBDA9F51B4DBE7D00109CAD /* Quotes List */ = {
+			isa = PBXGroup;
+			children = (
+				6D9A52CB1B4DA524002F911B /* QuotesListViewController.swift */,
+				6DD3E71C1B4D92F20094CFA3 /* QuoteTableViewCell.swift */,
+				6DD3E7231B4D9C3D0094CFA3 /* QuoteTableViewCellViewModel.swift */,
+			);
+			name = "Quotes List";
+			sourceTree = "<group>";
+		};
 		6DD3E6FD1B4D927F0094CFA3 = {
 			isa = PBXGroup;
 			children = (
 				6DD3E7081B4D927F0094CFA3 /* Quotes */,
+				6DBDA9E11B4DBA4400109CAD /* Quotes Tests */,
+				6D1F45ED1B4DB230005820CC /* Frameworks */,
 				6DD3E7071B4D927F0094CFA3 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -53,6 +150,7 @@
 			isa = PBXGroup;
 			children = (
 				6DD3E7061B4D927F0094CFA3 /* Quotes.app */,
+				6DBDA9E01B4DBA4400109CAD /* Quotes Tests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -74,9 +172,7 @@
 		6DD3E71B1B4D92A50094CFA3 /* Features */ = {
 			isa = PBXGroup;
 			children = (
-				6D9A52CB1B4DA524002F911B /* QuotesListViewController.swift */,
-				6DD3E71C1B4D92F20094CFA3 /* QuoteTableViewCell.swift */,
-				6DD3E7231B4D9C3D0094CFA3 /* QuoteTableViewCellViewModel.swift */,
+				6DBDA9F51B4DBE7D00109CAD /* Quotes List */,
 			);
 			path = Features;
 			sourceTree = "<group>";
@@ -100,6 +196,24 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		6DBDA9DF1B4DBA4400109CAD /* Quotes Tests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 6DBDA9E91B4DBA4400109CAD /* Build configuration list for PBXNativeTarget "Quotes Tests" */;
+			buildPhases = (
+				6DBDA9DC1B4DBA4400109CAD /* Sources */,
+				6DBDA9DD1B4DBA4400109CAD /* Frameworks */,
+				6DBDA9DE1B4DBA4400109CAD /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				6DBDA9E61B4DBA4400109CAD /* PBXTargetDependency */,
+			);
+			name = "Quotes Tests";
+			productName = "Quotes Tests";
+			productReference = 6DBDA9E01B4DBA4400109CAD /* Quotes Tests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		6DD3E7051B4D927F0094CFA3 /* Quotes */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 6DD3E7181B4D927F0094CFA3 /* Build configuration list for PBXNativeTarget "Quotes" */;
@@ -107,6 +221,7 @@
 				6DD3E7021B4D927F0094CFA3 /* Sources */,
 				6DD3E7031B4D927F0094CFA3 /* Frameworks */,
 				6DD3E7041B4D927F0094CFA3 /* Resources */,
+				6D1F45EC1B4DB202005820CC /* Carthage Copy Frameworks */,
 			);
 			buildRules = (
 			);
@@ -126,6 +241,10 @@
 				LastUpgradeCheck = 0700;
 				ORGANIZATIONNAME = "Tomasz Szulc";
 				TargetAttributes = {
+					6DBDA9DF1B4DBA4400109CAD = {
+						CreatedOnToolsVersion = 7.0;
+						TestTargetID = 6DD3E7051B4D927F0094CFA3;
+					};
 					6DD3E7051B4D927F0094CFA3 = {
 						CreatedOnToolsVersion = 7.0;
 					};
@@ -145,11 +264,21 @@
 			projectRoot = "";
 			targets = (
 				6DD3E7051B4D927F0094CFA3 /* Quotes */,
+				6DBDA9DF1B4DBA4400109CAD /* Quotes Tests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		6DBDA9DE1B4DBA4400109CAD /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6DBDA9EA1B4DBA9B00109CAD /* Nimble.framework in Resources */,
+				6DBDA9EB1B4DBA9B00109CAD /* Quick.framework in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		6DD3E7041B4D927F0094CFA3 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -162,7 +291,36 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		6D1F45EC1B4DB202005820CC /* Carthage Copy Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"$(SRCROOT)/Carthage/Build/iOS/Quick.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/Nimble.framework",
+			);
+			name = "Carthage Copy Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "/usr/local/bin/carthage copy-frameworks";
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
+		6DBDA9DC1B4DBA4400109CAD /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6DBDA9F71B4DBE9E00109CAD /* QuoteTableViewCellViewModelSpec.swift in Sources */,
+				6DBDA9E31B4DBA4400109CAD /* Quotes_Tests.swift in Sources */,
+				6DBDA9F21B4DBDA600109CAD /* QuoteSpec.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		6DD3E7021B4D927F0094CFA3 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -176,6 +334,14 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		6DBDA9E61B4DBA4400109CAD /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 6DD3E7051B4D927F0094CFA3 /* Quotes */;
+			targetProxy = 6DBDA9E51B4DBA4400109CAD /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		6DD3E70D1B4D927F0094CFA3 /* Main.storyboard */ = {
@@ -197,6 +363,34 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		6DBDA9E71B4DBA4400109CAD /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = "$(SRCROOT)/Carthage/Build/iOS/";
+				GCC_GENERATE_TEST_COVERAGE_FILES = YES;
+				INFOPLIST_FILE = "Quotes Tests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.tomaszszulc.Quotes-Tests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Quotes.app/Quotes";
+			};
+			name = Debug;
+		};
+		6DBDA9E81B4DBA4400109CAD /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = "$(SRCROOT)/Carthage/Build/iOS/";
+				GCC_GENERATE_TEST_COVERAGE_FILES = YES;
+				INFOPLIST_FILE = "Quotes Tests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.tomaszszulc.Quotes-Tests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Quotes.app/Quotes";
+			};
+			name = Release;
+		};
 		6DD3E7161B4D927F0094CFA3 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -217,6 +411,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -233,11 +428,12 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				VALID_ARCHS = "arm64 armv7 armv7s";
 			};
 			name = Debug;
 		};
@@ -261,6 +457,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -271,10 +468,11 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
+				VALID_ARCHS = "arm64 armv7 armv7s";
 			};
 			name = Release;
 		};
@@ -282,7 +480,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				FRAMEWORK_SEARCH_PATHS = "$(SRCROOT)/Carthage/Build/iOS/";
+				GCC_GENERATE_TEST_COVERAGE_FILES = YES;
 				INFOPLIST_FILE = Quotes/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.tomaszszulc.Quotes;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -293,7 +494,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				FRAMEWORK_SEARCH_PATHS = "$(SRCROOT)/Carthage/Build/iOS/";
+				GCC_GENERATE_TEST_COVERAGE_FILES = YES;
 				INFOPLIST_FILE = Quotes/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.tomaszszulc.Quotes;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -303,6 +507,14 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		6DBDA9E91B4DBA4400109CAD /* Build configuration list for PBXNativeTarget "Quotes Tests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6DBDA9E71B4DBA4400109CAD /* Debug */,
+				6DBDA9E81B4DBA4400109CAD /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
 		6DD3E7011B4D927F0094CFA3 /* Build configuration list for PBXProject "Quotes" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
