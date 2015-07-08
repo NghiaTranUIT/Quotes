@@ -158,8 +158,8 @@
 		6DD3E7081B4D927F0094CFA3 /* Quotes */ = {
 			isa = PBXGroup;
 			children = (
-				6DD3E71B1B4D92A50094CFA3 /* Features */,
 				6DD3E7091B4D927F0094CFA3 /* AppDelegate.swift */,
+				6DD3E71B1B4D92A50094CFA3 /* Features */,
 				6DD3E71F1B4D93990094CFA3 /* Services */,
 				6DD3E70D1B4D927F0094CFA3 /* Main.storyboard */,
 				6DD3E7101B4D927F0094CFA3 /* Assets.xcassets */,
