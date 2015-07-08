@@ -1,2 +1,2 @@
 # Quotes
-Swift app containing iOS 9 features and things mentioned on WWDC 2015
+Swift app containing iOS 8/9 features and things mentioned on WWDC 2015
