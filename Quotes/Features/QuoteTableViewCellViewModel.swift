@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import Model
 
 class QuoteTableViewCellViewModel {
     var quote: Quote

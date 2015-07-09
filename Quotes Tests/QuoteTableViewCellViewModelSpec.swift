@@ -7,17 +7,26 @@
 //
 
 import Foundation
-import Quick
 import Nimble
+import Quick
+
+@testable import Model
 @testable import Quotes
 
 class QuoteTableViewCellViewModelSpec: QuickSpec {
     override func spec() {
         describe("QouteTableViewCellViewModel") {
-            let quote = Quote(content: "A", author: "B")
-            let viewModel = QuoteTableViewCellViewModel(quote: quote)
-            expect(viewModel.content).to(equal("A"))
-            expect(viewModel.author).to(equal("-B"))
+            
+            beforeEach {
+                CoreDataStack.setupTestableStore()
+            }
+            
+            it("should return correct values") {
+                let quote = Quote.createQuote("A", author: "B", context: CoreDataStack.sharedInstance().mainContext)
+                let viewModel = QuoteTableViewCellViewModel(quote: quote)
+                expect(viewModel.content).to(equal("A"))
+                expect(viewModel.author).to(equal("-B"))
+            }
         }
     }
 }

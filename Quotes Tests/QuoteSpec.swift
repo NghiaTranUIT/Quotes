@@ -7,15 +7,23 @@
 //
 
 import Foundation
-import Quick
+import CoreData
 import Nimble
+import Quick
+
+@testable import Model
 @testable import Quotes
 
 class QuoteSpec: QuickSpec {
     override func spec() {
         describe("Quote") {
+            
+            beforeSuite {
+                CoreDataStack.setupTestableStore()
+            }
+            
             it("is created and filled") {
-                let quote = Quote(content: "A", author: "B")
+                let quote = Quote.createQuote("A", author: "B", context: CoreDataStack.sharedInstance().mainContext)
                 expect(quote.content).to(equal("A"))
                 expect(quote.author).to(equal("B"))
             }
