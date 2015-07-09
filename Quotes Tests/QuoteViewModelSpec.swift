@@ -13,9 +13,9 @@ import Quick
 @testable import Model
 @testable import Quotes
 
-class QuoteTableViewCellViewModelSpec: QuickSpec {
+class QuoteViewModelSpec: QuickSpec {
     override func spec() {
-        describe("QouteTableViewCellViewModel") {
+        describe("QuoteViewModel") {
             
             beforeEach {
                 CoreDataStack.setupTestableStore()
@@ -23,7 +23,7 @@ class QuoteTableViewCellViewModelSpec: QuickSpec {
             
             it("should return correct values") {
                 let quote = Quote(content: "A", author: "B", context: CoreDataStack.sharedInstance().mainContext)
-                let viewModel = QuoteTableViewCellViewModel(quote: quote)
+                let viewModel = QuoteViewModel(quote: quote)
                 expect(viewModel.content).to(equal("A"))
                 expect(viewModel.author).to(equal("-B"))
             }

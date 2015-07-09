@@ -1,12 +1,16 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="8121.20" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="4pT-IF-AwN">
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8101.16"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <customFonts key="customFonts">
         <mutableArray key="HelveticaNeue.ttc">
-            <string>HelveticaNeue-Italic</string>
+            <string>HelveticaNeue</string>
+        </mutableArray>
+        <mutableArray key="HelveticaNeueLights.ttc">
+            <string>HelveticaNeue-Light</string>
         </mutableArray>
     </customFonts>
     <scenes>
@@ -34,13 +38,13 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vXh-1W-Exb">
-                                                    <rect key="frame" x="8" y="148" width="584" height="17"/>
-                                                    <fontDescription key="fontDescription" type="system" weight="light" pointSize="14"/>
+                                                    <rect key="frame" x="8" y="151" width="584" height="14"/>
+                                                    <fontDescription key="fontDescription" style="UICTFontTextStyleCaption1"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" placeholderIntrinsicWidth="584" placeholderIntrinsicHeight="128" text="Label" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OG3-bN-gdY">
-                                                    <rect key="frame" x="8" y="8" width="584" height="132"/>
-                                                    <fontDescription key="fontDescription" name="HelveticaNeue-Italic" family="Helvetica Neue" pointSize="18"/>
+                                                    <rect key="frame" x="8" y="8" width="584" height="135"/>
+                                                    <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
@@ -78,11 +82,56 @@
                     <navigationItem key="navigationItem" title="Quotes" id="eJ4-EW-XfK"/>
                     <connections>
                         <outlet property="tableView" destination="OUm-Ft-jdf" id="tMB-Fd-IRP"/>
+                        <segue destination="Bhy-l9-YM0" kind="show" identifier="ShowQuote" id="gnO-iQ-eBT"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="BLG-iM-nKn" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="972" y="466"/>
+        </scene>
+        <!--Quote-->
+        <scene sceneID="4qi-v2-Cu9">
+            <objects>
+                <viewController title="Quote" id="Bhy-l9-YM0" customClass="QuoteDetailsViewController" customModule="Quotes" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="0UY-KT-FgB"/>
+                        <viewControllerLayoutGuide type="bottom" id="PNN-Nw-Dnq"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="UEu-nK-nFO">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="I1a-45-OFX">
+                                <rect key="frame" x="20" y="72" width="560" height="28"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="24"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UC7-Tl-grV">
+                                <rect key="frame" x="20" y="108" width="560" height="21"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="UC7-Tl-grV" firstAttribute="leading" secondItem="UEu-nK-nFO" secondAttribute="leadingMargin" id="35i-K8-8oj"/>
+                            <constraint firstItem="UC7-Tl-grV" firstAttribute="top" secondItem="I1a-45-OFX" secondAttribute="bottom" constant="8" id="FW5-Ys-owH"/>
+                            <constraint firstItem="I1a-45-OFX" firstAttribute="top" secondItem="0UY-KT-FgB" secondAttribute="bottom" constant="8" id="bOJ-gL-QIM"/>
+                            <constraint firstItem="I1a-45-OFX" firstAttribute="leading" secondItem="UEu-nK-nFO" secondAttribute="leadingMargin" id="fV5-Tx-eWI"/>
+                            <constraint firstItem="I1a-45-OFX" firstAttribute="trailing" secondItem="UEu-nK-nFO" secondAttribute="trailingMargin" id="nxp-iO-qOu"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="UC7-Tl-grV" secondAttribute="trailing" id="uaC-3F-SeZ"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="authorLabel" destination="UC7-Tl-grV" id="uCV-hL-pmg"/>
+                        <outlet property="contentLabel" destination="I1a-45-OFX" id="edt-UX-KbT"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="iad-0z-k90" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1715" y="466"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="43U-zo-hks">

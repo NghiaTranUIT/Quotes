@@ -9,8 +9,8 @@
 import Foundation
 import Model
 
-class QuoteTableViewCellViewModel {
-    var quote: Quote
+class QuoteViewModel {
+    private let quote: Quote
     
     init(quote: Quote) {
         self.quote = quote

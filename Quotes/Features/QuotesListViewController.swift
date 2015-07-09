@@ -9,8 +9,12 @@
 import Model
 import UIKit
 
+private enum SegueIdentifier: String {
+    case ShowQuote = "ShowQuote"
+}
+
 class QuotesListViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
-    @IBOutlet private weak var tableView: UITableView!
+    @IBOutlet private var tableView: UITableView!
     
     private var quotes = [Quote]()
     
@@ -41,15 +45,24 @@ class QuotesListViewController: UIViewController, UITableViewDelegate, UITableVi
         }
     }
     
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        switch SegueIdentifier(rawValue: segue.identifier!)! {
+        case .ShowQuote:
+            let quoteDetailsVC = segue.destinationViewController as! QuoteDetailsViewController
+            quoteDetailsVC.viewModel = QuoteViewModel(quote: sender as! Quote)
+        }
+    }
+    
     // MARK: UITableViewDelegate & DataSource
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier(QuoteTableViewCell.Identifier, forIndexPath: indexPath) as! QuoteTableViewCell
-        cell.viewModel = QuoteTableViewCellViewModel(quote: quotes[indexPath.row])
+        cell.viewModel = QuoteViewModel(quote: quotes[indexPath.row])
         return cell
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
+        self.performSegueWithIdentifier(SegueIdentifier.ShowQuote.rawValue, sender: quotes[indexPath.row])
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

@@ -11,19 +11,13 @@ import UIKit
 class QuoteTableViewCell: UITableViewCell {
     static let Identifier: String = "QuoteTableViewCell"
 
-    @IBOutlet private weak var quoteLabel: UILabel!
-    @IBOutlet private weak var authorLabel: UILabel!
+    @IBOutlet private var quoteLabel: UILabel!
+    @IBOutlet private var authorLabel: UILabel!
     
-    private var _viewModel: QuoteTableViewCellViewModel!
-    var viewModel: QuoteTableViewCellViewModel {
-        set {
-            _viewModel = newValue
-            quoteLabel.text = _viewModel.content
-            authorLabel.text = _viewModel.author
-        }
-        
-        get {
-            return _viewModel
+    var viewModel: QuoteViewModel! {
+        didSet {
+            quoteLabel?.text = viewModel.content
+            authorLabel?.text = viewModel.author
         }
     }
 }
