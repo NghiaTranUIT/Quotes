@@ -36,7 +36,7 @@ class QuotesListViewController: UIViewController, UITableViewDelegate, UITableVi
         
         let context = CoreDataStack.sharedInstance().mainContext
         for idx in 0..<quotesContent.count {
-            let quote = Quote.createQuote(quotesContent[idx], author: quotesAuthors[idx], context: context)
+            let quote = Quote(content: quotesContent[idx], author: quotesAuthors[idx], context: context)
             quotes.append(quote)
         }
     }

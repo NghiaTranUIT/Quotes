@@ -12,15 +12,15 @@ import CoreData
 public class Quote: NSManagedObject {
     @NSManaged public var content: String
     @NSManaged public var author: String
-    
-    public class func createQuote(content: String, author: String, context: NSManagedObjectContext) -> Quote {
-        let quote = createQuote(context)
-        quote.content = content
-        quote.author = author
-        return quote
+
+    public convenience init(content: String, author: String, context: NSManagedObjectContext) {
+        self.init(context)
+        self.content = content
+        self.author = author
     }
     
-    private class func createQuote(context: NSManagedObjectContext) -> Quote {
-        return NSEntityDescription.insertNewObjectForEntityForName("Quote", inManagedObjectContext: context) as! Quote
+    init(_ context: NSManagedObjectContext) {
+        let entity = NSEntityDescription.entityForName("Quote", inManagedObjectContext: context)!
+        super.init(entity: entity, insertIntoManagedObjectContext: context)
     }
 }

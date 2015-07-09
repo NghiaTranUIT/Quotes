@@ -22,7 +22,7 @@ class QuoteTableViewCellViewModelSpec: QuickSpec {
             }
             
             it("should return correct values") {
-                let quote = Quote.createQuote("A", author: "B", context: CoreDataStack.sharedInstance().mainContext)
+                let quote = Quote(content: "A", author: "B", context: CoreDataStack.sharedInstance().mainContext)
                 let viewModel = QuoteTableViewCellViewModel(quote: quote)
                 expect(viewModel.content).to(equal("A"))
                 expect(viewModel.author).to(equal("-B"))

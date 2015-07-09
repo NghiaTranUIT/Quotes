@@ -23,7 +23,7 @@ class QuoteSpec: QuickSpec {
             }
             
             it("is created and filled") {
-                let quote = Quote.createQuote("A", author: "B", context: CoreDataStack.sharedInstance().mainContext)
+                let quote = Quote(content: "A", author: "B", context: CoreDataStack.sharedInstance().mainContext)
                 expect(quote.content).to(equal("A"))
                 expect(quote.author).to(equal("B"))
             }
