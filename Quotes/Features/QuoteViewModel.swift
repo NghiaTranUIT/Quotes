@@ -17,10 +17,18 @@ class QuoteViewModel {
     }
     
     var content: String {
-        return quote.content
+        return "\"" + quote.content + "\""
     }
     
     var author: String {
         return "-" + quote.author
+    }
+    
+    var contentExcerpt: String {
+        if distance(content.startIndex, content.endIndex) > 20 {
+            return content.excerpt(20) + "..."
+        } else {
+            return content
+        }
     }
 }

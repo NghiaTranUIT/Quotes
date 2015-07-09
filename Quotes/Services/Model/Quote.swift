@@ -10,13 +10,19 @@ import Foundation
 import CoreData
 
 public class Quote: NSManagedObject {
-    @NSManaged public var content: String
     @NSManaged public var author: String
+    @NSManaged public var content: String
+    @NSManaged private var identifierValue: String
 
+    public var identifier: String {
+        return identifierValue
+    }
+    
     public convenience init(content: String, author: String, context: NSManagedObjectContext) {
         self.init(context)
         self.content = content
         self.author = author
+        self.identifierValue = NSUUID().UUIDString + "-\(NSDate().timeIntervalSince1970)"
     }
     
     init(_ context: NSManagedObjectContext) {

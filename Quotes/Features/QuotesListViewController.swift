@@ -6,6 +6,8 @@
 //  Copyright © 2015 Tomasz Szulc. All rights reserved.
 //
 
+import CoreSpotlight
+import MobileCoreServices
 import Model
 import UIKit
 
@@ -43,6 +45,33 @@ class QuotesListViewController: UIViewController, UITableViewDelegate, UITableVi
             let quote = Quote(content: quotesContent[idx], author: quotesAuthors[idx], context: context)
             quotes.append(quote)
         }
+        
+        if #available(iOS 9.0, *) {
+            var searchableItems = [CSSearchableItem]()
+            
+            for quote in quotes {
+                let model = QuoteViewModel(quote: quote)
+                // Create set of attributes and searchable item
+                let attributeSet = CSSearchableItemAttributeSet(itemContentType: kUTTypePlainText as String)
+                attributeSet.displayName = "Quote from " + quote.author
+                attributeSet.title = "Quote"
+                attributeSet.contentDescription = model.contentExcerpt
+                attributeSet.keywords = [quote.author]
+                
+                let searchableItem = CSSearchableItem(uniqueIdentifier: quote.identifier, domainIdentifier: "com.tomaszszulc.Quotes.Quote", attributeSet: attributeSet)
+                searchableItems.append(searchableItem)
+            }
+            
+            // Index
+            CSSearchableIndex.defaultSearchableIndex().indexSearchableItems(searchableItems, completionHandler: { (error) -> Void in
+                if let error = error {
+                    print("error during indexing: \(error.localizedDescription)")
+                } else {
+                    print("search items indexed")
+                }
+            })
+        }
+        
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
@@ -69,4 +98,3 @@ class QuotesListViewController: UIViewController, UITableViewDelegate, UITableVi
         return quotes.count
     }
 }
-
