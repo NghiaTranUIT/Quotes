@@ -141,6 +141,14 @@
 			name = "Other Resources";
 			sourceTree = "<group>";
 		};
+		6D0970321B4EE7F2005C93F4 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				6D0970081B4EE256005C93F4 /* CoreDataStack+InMemoryStore.swift */,
+			);
+			name = Helpers;
+			sourceTree = "<group>";
+		};
 		6D1F45ED1B4DB230005820CC /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -153,20 +161,12 @@
 		6DBDA9E11B4DBA4400109CAD /* Quotes Tests */ = {
 			isa = PBXGroup;
 			children = (
-				6D0970081B4EE256005C93F4 /* CoreDataStack+InMemoryStore.swift */,
 				6DBDA9F31B4DBE6A00109CAD /* Features */,
-				6DBDA9EF1B4DBD9000109CAD /* Services */,
+				6D0970321B4EE7F2005C93F4 /* Helpers */,
+				6DBDA9F01B4DBD9500109CAD /* Model */,
 				6D0970301B4EE42C005C93F4 /* Other Resources */,
 			);
 			path = "Quotes Tests";
-			sourceTree = "<group>";
-		};
-		6DBDA9EF1B4DBD9000109CAD /* Services */ = {
-			isa = PBXGroup;
-			children = (
-				6DBDA9F01B4DBD9500109CAD /* Model */,
-			);
-			name = Services;
 			sourceTree = "<group>";
 		};
 		6DBDA9F01B4DBD9500109CAD /* Model */ = {
