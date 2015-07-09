@@ -29,4 +29,14 @@ public class Quote: NSManagedObject {
         let entity = NSEntityDescription.entityForName("Quote", inManagedObjectContext: context)!
         super.init(entity: entity, insertIntoManagedObjectContext: context)
     }
+    
+    public class func find(identifier: String, context: NSManagedObjectContext) -> Quote? {
+        let fetchRequest = NSFetchRequest(entityName: "Quote")
+        fetchRequest.predicate = NSPredicate(format: "identifierValue == %@", identifier)
+        do {
+            return try context.executeFetchRequest(fetchRequest).first as? Quote
+        } catch {
+            return nil
+        }
+    }
 }

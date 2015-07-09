@@ -17,7 +17,19 @@ class QuoteDetailsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.contentLabel.text = viewModel.content
-        self.authorLabel.text = viewModel.author
+        contentLabel.text = viewModel.content
+        authorLabel.text = viewModel.author
+        
+        userActivity = viewModel.userActivity
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        userActivity?.becomeCurrent()
+    }
+    
+    override func viewDidDisappear(animated: Bool) {
+        super.viewDidDisappear(animated)
+        userActivity?.invalidate()
     }
 }

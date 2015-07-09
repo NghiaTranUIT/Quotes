@@ -29,6 +29,9 @@
 		6DD3E71D1B4D92F20094CFA3 /* QuoteTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DD3E71C1B4D92F20094CFA3 /* QuoteTableViewCell.swift */; };
 		6DD3E7241B4D9C3D0094CFA3 /* QuoteViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DD3E7231B4D9C3D0094CFA3 /* QuoteViewModel.swift */; };
 		6DFD48911B4EFE4700E2A7A8 /* String+Substring.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DFD48901B4EFE4700E2A7A8 /* String+Substring.swift */; };
+		6DFD48961B4F108B00E2A7A8 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6DFD48941B4F105700E2A7A8 /* CoreData.framework */; };
+		6DFD48991B4F116000E2A7A8 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6DFD48981B4F116000E2A7A8 /* MobileCoreServices.framework */; };
+		6DFD48A11B4F229C00E2A7A8 /* ActivityType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DFD48A01B4F229C00E2A7A8 /* ActivityType.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -87,6 +90,9 @@
 		6DF150151B4DB8C800E23D9C /* Quick.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Quick.framework; path = Carthage/Build/iOS/Quick.framework; sourceTree = "<group>"; };
 		6DF150181B4DB9D300E23D9C /* Nimble.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Nimble.framework; path = Carthage/Build/iOS/Nimble.framework; sourceTree = "<group>"; };
 		6DFD48901B4EFE4700E2A7A8 /* String+Substring.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+Substring.swift"; sourceTree = "<group>"; };
+		6DFD48941B4F105700E2A7A8 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		6DFD48981B4F116000E2A7A8 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
+		6DFD48A01B4F229C00E2A7A8 /* ActivityType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActivityType.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -94,6 +100,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6DFD48961B4F108B00E2A7A8 /* CoreData.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -110,6 +117,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6DFD48991B4F116000E2A7A8 /* MobileCoreServices.framework in Frameworks */,
 				6D0970241B4EE3D9005C93F4 /* Model.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -156,6 +164,8 @@
 		6D1F45ED1B4DB230005820CC /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				6DFD48981B4F116000E2A7A8 /* MobileCoreServices.framework */,
+				6DFD48941B4F105700E2A7A8 /* CoreData.framework */,
 				6DF150181B4DB9D300E23D9C /* Nimble.framework */,
 				6DF150151B4DB8C800E23D9C /* Quick.framework */,
 			);
@@ -255,6 +265,7 @@
 			isa = PBXGroup;
 			children = (
 				6DFD48901B4EFE4700E2A7A8 /* String+Substring.swift */,
+				6DFD48A01B4F229C00E2A7A8 /* ActivityType.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -449,6 +460,7 @@
 				6DD3E70A1B4D927F0094CFA3 /* AppDelegate.swift in Sources */,
 				6DFD48911B4EFE4700E2A7A8 /* String+Substring.swift in Sources */,
 				6DD3E71D1B4D92F20094CFA3 /* QuoteTableViewCell.swift in Sources */,
+				6DFD48A11B4F229C00E2A7A8 /* ActivityType.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -490,6 +502,7 @@
 		6D0970271B4EE3D9005C93F4 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_MODULES_AUTOLINK = YES;
 				CURRENT_PROJECT_VERSION = 1;
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
@@ -512,6 +525,7 @@
 		6D0970281B4EE3D9005C93F4 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_MODULES_AUTOLINK = YES;
 				CURRENT_PROJECT_VERSION = 1;
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
@@ -535,6 +549,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_MODULES_AUTOLINK = YES;
 				FRAMEWORK_SEARCH_PATHS = "$(SRCROOT)/Carthage/Build/iOS/";
 				GCC_GENERATE_TEST_COVERAGE_FILES = YES;
 				INFOPLIST_FILE = "Quotes Tests/Info.plist";
@@ -549,6 +564,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_MODULES_AUTOLINK = YES;
 				FRAMEWORK_SEARCH_PATHS = "$(SRCROOT)/Carthage/Build/iOS/";
 				GCC_GENERATE_TEST_COVERAGE_FILES = YES;
 				INFOPLIST_FILE = "Quotes Tests/Info.plist";
@@ -567,6 +583,7 @@
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_MODULES_AUTOLINK = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
@@ -597,6 +614,7 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LINK_WITH_STANDARD_LIBRARIES = YES;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -613,6 +631,7 @@
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_MODULES_AUTOLINK = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
@@ -637,6 +656,7 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LINK_WITH_STANDARD_LIBRARIES = YES;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
@@ -648,12 +668,14 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_MODULES_AUTOLINK = YES;
 				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				FRAMEWORK_SEARCH_PATHS = "$(SRCROOT)/Carthage/Build/iOS/";
 				GCC_GENERATE_TEST_COVERAGE_FILES = YES;
 				INFOPLIST_FILE = Quotes/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				OTHER_LDFLAGS = "";
 				PRODUCT_BUNDLE_IDENTIFIER = com.tomaszszulc.Quotes;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -663,12 +685,14 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_MODULES_AUTOLINK = YES;
 				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				FRAMEWORK_SEARCH_PATHS = "$(SRCROOT)/Carthage/Build/iOS/";
 				GCC_GENERATE_TEST_COVERAGE_FILES = YES;
 				INFOPLIST_FILE = Quotes/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				OTHER_LDFLAGS = "";
 				PRODUCT_BUNDLE_IDENTIFIER = com.tomaszszulc.Quotes;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};

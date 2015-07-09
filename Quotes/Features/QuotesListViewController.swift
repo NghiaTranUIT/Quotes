@@ -47,31 +47,43 @@ class QuotesListViewController: UIViewController, UITableViewDelegate, UITableVi
         }
         
         if #available(iOS 9.0, *) {
-            var searchableItems = [CSSearchableItem]()
-            
-            for quote in quotes {
-                let model = QuoteViewModel(quote: quote)
-                // Create set of attributes and searchable item
-                let attributeSet = CSSearchableItemAttributeSet(itemContentType: kUTTypePlainText as String)
-                attributeSet.displayName = "Quote from " + quote.author
-                attributeSet.title = "Quote"
-                attributeSet.contentDescription = model.contentExcerpt
-                attributeSet.keywords = [quote.author]
+            dispatch_async(dispatch_get_global_queue(QOS_CLASS_BACKGROUND, 0)) {
+                // Remove all existing searchable items because up doesn't track them.
+                let semaphore = dispatch_semaphore_create(0)
+                CSSearchableIndex.defaultSearchableIndex().deleteAllSearchableItemsWithCompletionHandler({ (error) -> Void in
+                    if let error = error {
+                        print(error)
+                    }
+                    dispatch_semaphore_signal(semaphore)
+                })
                 
-                let searchableItem = CSSearchableItem(uniqueIdentifier: quote.identifier, domainIdentifier: "com.tomaszszulc.Quotes.Quote", attributeSet: attributeSet)
-                searchableItems.append(searchableItem)
-            }
-            
-            // Index
-            CSSearchableIndex.defaultSearchableIndex().indexSearchableItems(searchableItems, completionHandler: { (error) -> Void in
-                if let error = error {
-                    print("error during indexing: \(error.localizedDescription)")
-                } else {
-                    print("search items indexed")
+                dispatch_semaphore_wait(semaphore, DISPATCH_TIME_FOREVER)
+                
+                var searchableItems = [CSSearchableItem]()
+                
+                for quote in self.quotes {
+                    let model = QuoteViewModel(quote: quote)
+                    // Create set of attributes and searchable item
+                    let attributeSet = CSSearchableItemAttributeSet(itemContentType: kUTTypePlainText as String)
+                    attributeSet.displayName = "Quote from " + quote.author
+                    attributeSet.title = "Quote"
+                    attributeSet.contentDescription = model.contentExcerpt
+                    attributeSet.keywords = [quote.author]
+
+                    let searchableItem = CSSearchableItem(uniqueIdentifier: quote.identifier, domainIdentifier: "com.tomaszszulc.Quotes.Quote", attributeSet: attributeSet)
+                    searchableItems.append(searchableItem)
                 }
-            })
+                
+                // Index
+                CSSearchableIndex.defaultSearchableIndex().indexSearchableItems(searchableItems, completionHandler: { (error) -> Void in
+                    if let error = error {
+                        print("error during indexing: \(error.localizedDescription)")
+                    } else {
+                        print("search items indexed")
+                    }
+                })
+            }
         }
-        
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
@@ -80,6 +92,17 @@ class QuotesListViewController: UIViewController, UITableViewDelegate, UITableVi
             let quoteDetailsVC = segue.destinationViewController as! QuoteDetailsViewController
             quoteDetailsVC.viewModel = QuoteViewModel(quote: sender as! Quote)
         }
+    }
+    
+    override func restoreUserActivityState(activity: NSUserActivity) {
+        if let userInfo = activity.userInfo as? Dictionary<String, AnyObject> {
+            if let uniqueIdentifier = userInfo[CSSearchableItemActivityIdentifier] as? String {
+                if let quote = Quote.find(uniqueIdentifier, context: CoreDataStack.sharedInstance().mainContext) {
+                    showDetailsForQuote(quote)
+                }
+            }
+        }
+        super.restoreUserActivityState(activity)
     }
     
     // MARK: UITableViewDelegate & DataSource
@@ -91,7 +114,11 @@ class QuotesListViewController: UIViewController, UITableViewDelegate, UITableVi
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
-        self.performSegueWithIdentifier(SegueIdentifier.ShowQuote.rawValue, sender: quotes[indexPath.row])
+        showDetailsForQuote(quotes[indexPath.row])
+    }
+    
+    private func showDetailsForQuote(quote: Quote) {
+        self.performSegueWithIdentifier(SegueIdentifier.ShowQuote.rawValue, sender: quote)
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
