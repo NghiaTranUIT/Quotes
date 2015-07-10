@@ -13,6 +13,7 @@ import UIKit
 
 private enum SegueIdentifier: String {
     case ShowQuote = "ShowQuote"
+    case AddQuote = "AddQuote"
 }
 
 class QuotesListViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
@@ -24,7 +25,12 @@ class QuotesListViewController: UIViewController, UITableViewDelegate, UITableVi
         super.viewDidLoad()
         tableView.estimatedRowHeight = 40
         tableView.rowHeight = UITableViewAutomaticDimension
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
         quotes = Quote.findAll(CoreDataStack.sharedInstance().mainContext)
+        tableView.reloadData()
     }
     
     private func debug_populateQuotes() {
@@ -52,6 +58,7 @@ class QuotesListViewController: UIViewController, UITableViewDelegate, UITableVi
         case .ShowQuote:
             let quoteDetailsVC = segue.destinationViewController as! QuoteDetailsViewController
             quoteDetailsVC.viewModel = QuoteViewModel(quote: sender as! Quote)
+        default: break
         }
     }
     

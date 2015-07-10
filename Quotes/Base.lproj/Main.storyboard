@@ -9,8 +9,11 @@
     <customFonts key="customFonts">
         <mutableArray key="HelveticaNeue.ttc">
             <string>HelveticaNeue</string>
+            <string>HelveticaNeue-Medium</string>
         </mutableArray>
         <mutableArray key="HelveticaNeueLights.ttc">
+            <string>HelveticaNeue-Light</string>
+            <string>HelveticaNeue-Light</string>
             <string>HelveticaNeue-Light</string>
         </mutableArray>
     </customFonts>
@@ -82,7 +85,11 @@
                     </view>
                     <navigationItem key="navigationItem" title="Quotes" id="eJ4-EW-XfK">
                         <rightBarButtonItems>
-                            <barButtonItem systemItem="add" id="2w7-vn-ILK"/>
+                            <barButtonItem systemItem="add" id="2w7-vn-ILK">
+                                <connections>
+                                    <segue destination="rYC-48-4te" kind="presentation" identifier="AddQuote" id="wtt-mZ-PdE"/>
+                                </connections>
+                            </barButtonItem>
                             <barButtonItem systemItem="refresh" id="vxG-Ka-39t">
                                 <connections>
                                     <action selector="populateQuotes:" destination="L16-bD-T2m" id="zwY-Vi-8vv"/>
@@ -143,6 +150,121 @@
             </objects>
             <point key="canvasLocation" x="1715" y="466"/>
         </scene>
+        <!--New Quote-->
+        <scene sceneID="Qwu-8f-WsT">
+            <objects>
+                <viewController title="New Quote" automaticallyAdjustsScrollViewInsets="NO" id="cj6-U1-ztF" customClass="AddQuoteViewController" customModule="Quotes" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="4tz-fv-Mye"/>
+                        <viewControllerLayoutGuide type="bottom" id="z9h-LX-nup"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="M3x-Bo-t6L">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="c3c-3Y-BBA">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2ZB-NS-JUS">
+                                        <rect key="frame" x="0.0" y="0.0" width="600" height="305"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Quote" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9ge-ft-i50">
+                                                <rect key="frame" x="8" y="74" width="43" height="19"/>
+                                                <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="16"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GvU-LK-qYe">
+                                                <rect key="frame" x="8" y="101" width="584" height="102"/>
+                                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</string>
+                                                <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences" returnKeyType="next"/>
+                                                <connections>
+                                                    <outlet property="delegate" destination="cj6-U1-ztF" id="HbL-ga-wxv"/>
+                                                </connections>
+                                            </textView>
+                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Somebody..." minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="78u-4C-DgB">
+                                                <rect key="frame" x="8" y="255" width="584" height="30"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="30" id="GcF-xL-gSD"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="17"/>
+                                                <textInputTraits key="textInputTraits" autocapitalizationType="words" returnKeyType="done"/>
+                                                <connections>
+                                                    <outlet property="delegate" destination="cj6-U1-ztF" id="tlx-Kd-0b3"/>
+                                                </connections>
+                                            </textField>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Said" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JlT-HT-JIf">
+                                                <rect key="frame" x="8" y="236" width="31" height="19"/>
+                                                <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="16"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <gestureRecognizers/>
+                                        <constraints>
+                                            <constraint firstAttribute="trailingMargin" secondItem="78u-4C-DgB" secondAttribute="trailing" id="35X-Ff-WBu"/>
+                                            <constraint firstItem="78u-4C-DgB" firstAttribute="top" secondItem="JlT-HT-JIf" secondAttribute="bottom" id="4ro-Ij-GZp"/>
+                                            <constraint firstItem="JlT-HT-JIf" firstAttribute="top" secondItem="GvU-LK-qYe" secondAttribute="bottom" constant="33" id="4yu-oj-MaE"/>
+                                            <constraint firstItem="78u-4C-DgB" firstAttribute="leading" secondItem="2ZB-NS-JUS" secondAttribute="leadingMargin" id="54T-Me-i07"/>
+                                            <constraint firstItem="JlT-HT-JIf" firstAttribute="leading" secondItem="2ZB-NS-JUS" secondAttribute="leadingMargin" id="7W3-Av-MOc"/>
+                                            <constraint firstItem="GvU-LK-qYe" firstAttribute="top" secondItem="9ge-ft-i50" secondAttribute="bottom" constant="8" id="8ZW-Ph-6DL"/>
+                                            <constraint firstAttribute="bottom" secondItem="78u-4C-DgB" secondAttribute="bottom" constant="20" id="Cu4-WM-2zP"/>
+                                            <constraint firstItem="GvU-LK-qYe" firstAttribute="trailing" secondItem="2ZB-NS-JUS" secondAttribute="trailingMargin" id="Kop-mW-bOh"/>
+                                            <constraint firstItem="9ge-ft-i50" firstAttribute="leading" secondItem="2ZB-NS-JUS" secondAttribute="leadingMargin" id="Qh9-qs-azc"/>
+                                            <constraint firstItem="GvU-LK-qYe" firstAttribute="leading" secondItem="2ZB-NS-JUS" secondAttribute="leadingMargin" id="VG9-ii-HY7"/>
+                                            <constraint firstItem="9ge-ft-i50" firstAttribute="top" secondItem="2ZB-NS-JUS" secondAttribute="top" constant="74" id="bUV-EW-naT"/>
+                                        </constraints>
+                                        <connections>
+                                            <outletCollection property="gestureRecognizers" destination="6kr-kQ-bxG" appends="YES" id="lVv-Au-Vjg"/>
+                                        </connections>
+                                    </view>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="2ZB-NS-JUS" secondAttribute="bottom" id="BI1-PN-yTq"/>
+                                    <constraint firstItem="2ZB-NS-JUS" firstAttribute="leading" secondItem="c3c-3Y-BBA" secondAttribute="leading" id="BuX-7H-bz1"/>
+                                    <constraint firstAttribute="trailing" secondItem="2ZB-NS-JUS" secondAttribute="trailing" id="Fim-gE-rrr"/>
+                                    <constraint firstItem="2ZB-NS-JUS" firstAttribute="width" secondItem="c3c-3Y-BBA" secondAttribute="width" id="FjN-PK-KpB"/>
+                                    <constraint firstItem="2ZB-NS-JUS" firstAttribute="top" secondItem="c3c-3Y-BBA" secondAttribute="top" id="lca-bO-JNn"/>
+                                </constraints>
+                            </scrollView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="c3c-3Y-BBA" firstAttribute="leading" secondItem="M3x-Bo-t6L" secondAttribute="leading" id="Mz4-XE-ROZ"/>
+                            <constraint firstItem="z9h-LX-nup" firstAttribute="top" secondItem="c3c-3Y-BBA" secondAttribute="bottom" id="UL9-jT-iyv"/>
+                            <constraint firstItem="c3c-3Y-BBA" firstAttribute="top" secondItem="M3x-Bo-t6L" secondAttribute="top" id="eVF-C4-yv8"/>
+                            <constraint firstAttribute="trailing" secondItem="c3c-3Y-BBA" secondAttribute="trailing" id="jDO-3o-lVA"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="Add Quote" id="AwA-om-byI">
+                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="ldM-8O-Z7u">
+                            <connections>
+                                <action selector="cancelPressed:" destination="cj6-U1-ztF" id="sLw-ro-VHo"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="5Ej-CC-tCP">
+                            <connections>
+                                <action selector="savePressed:" destination="cj6-U1-ztF" id="E6B-cG-ecU"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="bottomGuideConstraint" destination="UL9-jT-iyv" id="1RA-Eu-Uje"/>
+                        <outlet property="quoteContentTextView" destination="GvU-LK-qYe" id="Ppj-dX-7rH"/>
+                        <outlet property="saidByTextField" destination="78u-4C-DgB" id="bo6-FE-myT"/>
+                        <outlet property="saveButton" destination="5Ej-CC-tCP" id="UoX-m5-iq8"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="gZP-8b-pi3" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="6kr-kQ-bxG">
+                    <pressTypeMask key="allowedPressTypes"/>
+                    <connections>
+                        <action selector="handleTap:" destination="cj6-U1-ztF" id="zSv-qb-wtY"/>
+                    </connections>
+                </tapGestureRecognizer>
+            </objects>
+            <point key="canvasLocation" x="2527" y="1211"/>
+        </scene>
         <!--Navigation Controller-->
         <scene sceneID="43U-zo-hks">
             <objects>
@@ -160,6 +282,24 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="o0m-os-UsN" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="140" y="466"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="aYi-lK-aFd">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="rYC-48-4te" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="iDH-Vb-JDV">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="cj6-U1-ztF" kind="relationship" relationship="rootViewController" id="w2X-cI-19p"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ogu-ut-9Bh" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1715" y="1211"/>
         </scene>
     </scenes>
 </document>
