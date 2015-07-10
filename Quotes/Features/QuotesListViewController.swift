@@ -24,66 +24,27 @@ class QuotesListViewController: UIViewController, UITableViewDelegate, UITableVi
         super.viewDidLoad()
         tableView.estimatedRowHeight = 40
         tableView.rowHeight = UITableViewAutomaticDimension
-        debug_populateQuotes()
+        quotes = Quote.findAll(CoreDataStack.sharedInstance().mainContext)
     }
     
     private func debug_populateQuotes() {
-        let quotesContent = [
-            "Life is about making an impact, not making an income.",
-            "Whatever the mind of man can conceive and believe, it can achieve.",
-            "Two roads diverged in a wood, and I—I took the one less traveled by, And that has made all the difference.",
-            "I attribute my success to this: I never gave or took any excuse.",
-            "You miss 100% of the shots you don’t take.",
-            "I’ve missed more than 9000 shots in my career. I’ve lost almost 300 games. 26 times I’ve been trusted to take the game winning shot and missed. I’ve failed over and over and over again in my life. And that is why I succeed."]
-        
-        let quotesAuthors = [
-            "Kevin Kruse", "Napoleon Hill", "Robert Frost", "Florence Nightingale", "Wayne Gretzky", "Michael Jordan"
-        ]
-        
-        let context = CoreDataStack.sharedInstance().mainContext
-        for idx in 0..<quotesContent.count {
-            let quote = Quote(content: quotesContent[idx], author: quotesAuthors[idx], context: context)
-            quotes.append(quote)
-        }
-        
-        if #available(iOS 9.0, *) {
-            dispatch_async(dispatch_get_global_queue(QOS_CLASS_BACKGROUND, 0)) {
-                // Remove all existing searchable items because up doesn't track them.
-                let semaphore = dispatch_semaphore_create(0)
-                CSSearchableIndex.defaultSearchableIndex().deleteAllSearchableItemsWithCompletionHandler({ (error) -> Void in
-                    if let error = error {
-                        print(error)
-                    }
-                    dispatch_semaphore_signal(semaphore)
-                })
-                
-                dispatch_semaphore_wait(semaphore, DISPATCH_TIME_FOREVER)
-                
-                var searchableItems = [CSSearchableItem]()
-                
-                for quote in self.quotes {
-                    let model = QuoteViewModel(quote: quote)
-                    // Create set of attributes and searchable item
-                    let attributeSet = CSSearchableItemAttributeSet(itemContentType: kUTTypePlainText as String)
-                    attributeSet.displayName = "Quote from " + quote.author
-                    attributeSet.title = "Quote"
-                    attributeSet.contentDescription = model.contentExcerpt
-                    attributeSet.keywords = [quote.author]
+        let populatedQuotes = Quote.debugPopulate(CoreDataStack.sharedInstance().mainContext)
+        quotes += populatedQuotes
 
-                    let searchableItem = CSSearchableItem(uniqueIdentifier: quote.identifier, domainIdentifier: "com.tomaszszulc.Quotes.Quote", attributeSet: attributeSet)
-                    searchableItems.append(searchableItem)
-                }
-                
-                // Index
-                CSSearchableIndex.defaultSearchableIndex().indexSearchableItems(searchableItems, completionHandler: { (error) -> Void in
-                    if let error = error {
-                        print("error during indexing: \(error.localizedDescription)")
-                    } else {
-                        print("search items indexed")
-                    }
-                })
-            }
+        if #available(iOS 9.0, *) {
+            Quote.index(populatedQuotes)
         }
+        
+        do {
+            try CoreDataStack.sharedInstance().mainContext.save()
+        } catch {
+            /// do nothing
+        }
+    }
+    
+    @IBAction func populateQuotes(sender: AnyObject) {
+        debug_populateQuotes()
+        tableView.reloadData()
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {

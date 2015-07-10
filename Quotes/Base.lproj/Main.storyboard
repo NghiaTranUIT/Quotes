@@ -4,6 +4,7 @@
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8101.16"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="Navigation items with more than one left or right bar item" minToolsVersion="7.0"/>
     </dependencies>
     <customFonts key="customFonts">
         <mutableArray key="HelveticaNeue.ttc">
@@ -79,7 +80,16 @@
                             <constraint firstItem="ZXF-ma-Sf9" firstAttribute="top" secondItem="OUm-Ft-jdf" secondAttribute="bottom" id="Vgg-S5-GdO"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Quotes" id="eJ4-EW-XfK"/>
+                    <navigationItem key="navigationItem" title="Quotes" id="eJ4-EW-XfK">
+                        <rightBarButtonItems>
+                            <barButtonItem systemItem="add" id="2w7-vn-ILK"/>
+                            <barButtonItem systemItem="refresh" id="vxG-Ka-39t">
+                                <connections>
+                                    <action selector="populateQuotes:" destination="L16-bD-T2m" id="zwY-Vi-8vv"/>
+                                </connections>
+                            </barButtonItem>
+                        </rightBarButtonItems>
+                    </navigationItem>
                     <connections>
                         <outlet property="tableView" destination="OUm-Ft-jdf" id="tMB-Fd-IRP"/>
                         <segue destination="Bhy-l9-YM0" kind="show" identifier="ShowQuote" id="gnO-iQ-eBT"/>

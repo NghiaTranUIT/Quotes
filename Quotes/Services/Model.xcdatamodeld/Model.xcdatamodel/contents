@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model userDefinedModelVersionIdentifier="Model 1" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="8118.20" systemVersion="14D136" minimumToolsVersion="Xcode 7.0">
-    <entity name="Quote" representedClassName="Model.Quote" syncable="YES">
+    <entity name="Quote" representedClassName="Quote" syncable="YES">
         <attribute name="author" attributeType="String" syncable="YES"/>
         <attribute name="content" attributeType="String" syncable="YES"/>
         <attribute name="identifierValue" attributeType="String" syncable="YES"/>

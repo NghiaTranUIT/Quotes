@@ -32,6 +32,8 @@
 		6DFD48961B4F108B00E2A7A8 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6DFD48941B4F105700E2A7A8 /* CoreData.framework */; };
 		6DFD48991B4F116000E2A7A8 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6DFD48981B4F116000E2A7A8 /* MobileCoreServices.framework */; };
 		6DFD48A11B4F229C00E2A7A8 /* ActivityType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DFD48A01B4F229C00E2A7A8 /* ActivityType.swift */; };
+		6DFD48A31B4F8F8B00E2A7A8 /* Quote+DebugPopulate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DFD48A21B4F8F8B00E2A7A8 /* Quote+DebugPopulate.swift */; };
+		6DFD48A51B4F901100E2A7A8 /* Quote+CoreSpotlight.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DFD48A41B4F901100E2A7A8 /* Quote+CoreSpotlight.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -93,6 +95,8 @@
 		6DFD48941B4F105700E2A7A8 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		6DFD48981B4F116000E2A7A8 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
 		6DFD48A01B4F229C00E2A7A8 /* ActivityType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActivityType.swift; sourceTree = "<group>"; };
+		6DFD48A21B4F8F8B00E2A7A8 /* Quote+DebugPopulate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Quote+DebugPopulate.swift"; sourceTree = "<group>"; };
+		6DFD48A41B4F901100E2A7A8 /* Quote+CoreSpotlight.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Quote+CoreSpotlight.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -264,8 +268,10 @@
 		6DD3E71F1B4D93990094CFA3 /* Services */ = {
 			isa = PBXGroup;
 			children = (
-				6DFD48901B4EFE4700E2A7A8 /* String+Substring.swift */,
 				6DFD48A01B4F229C00E2A7A8 /* ActivityType.swift */,
+				6DFD48A21B4F8F8B00E2A7A8 /* Quote+DebugPopulate.swift */,
+				6DFD48A41B4F901100E2A7A8 /* Quote+CoreSpotlight.swift */,
+				6DFD48901B4EFE4700E2A7A8 /* String+Substring.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -457,9 +463,11 @@
 				6D0777FC1B4EEFBB00613158 /* QuoteDetailsViewController.swift in Sources */,
 				6D9A52CC1B4DA524002F911B /* QuotesListViewController.swift in Sources */,
 				6DD3E7241B4D9C3D0094CFA3 /* QuoteViewModel.swift in Sources */,
+				6DFD48A51B4F901100E2A7A8 /* Quote+CoreSpotlight.swift in Sources */,
 				6DD3E70A1B4D927F0094CFA3 /* AppDelegate.swift in Sources */,
 				6DFD48911B4EFE4700E2A7A8 /* String+Substring.swift in Sources */,
 				6DD3E71D1B4D92F20094CFA3 /* QuoteTableViewCell.swift in Sources */,
+				6DFD48A31B4F8F8B00E2A7A8 /* Quote+DebugPopulate.swift in Sources */,
 				6DFD48A11B4F229C00E2A7A8 /* ActivityType.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

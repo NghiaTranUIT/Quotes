@@ -25,19 +25,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     func application(application: UIApplication, continueUserActivity userActivity: NSUserActivity, restorationHandler: ([AnyObject]?) -> Void) -> Bool {
-        if #available(iOS 9.0, *) {
-            if userActivity.activityType == CSSearchableItemActionType {
-                if let navigationController = self.window?.rootViewController as? UINavigationController {
-                    if (navigationController.topViewController is QuotesListViewController) == false {
-                        navigationController.popToRootViewControllerAnimated(false)
-                    }
-                    
-                    navigationController.topViewController?.restoreUserActivityState(userActivity)
+        if userActivity.activityType == CSSearchableItemActionType {
+            if let navigationController = self.window?.rootViewController as? UINavigationController {
+                if (navigationController.topViewController is QuotesListViewController) == false {
+                    navigationController.popToRootViewControllerAnimated(false)
                 }
                 
-            } else if userActivity.activityType == ActivityType.BrowseQuote.rawValue {
-                self.window?.rootViewController?.restoreUserActivityState(userActivity)
+                navigationController.topViewController?.restoreUserActivityState(userActivity)
             }
+            
+        } else if userActivity.activityType == ActivityType.BrowseQuote.rawValue {
+            self.window?.rootViewController?.restoreUserActivityState(userActivity)
         }
         
         return true
