@@ -24,7 +24,7 @@ class QuoteViewModelSpec: QuickSpec {
             it("should return correct values") {
                 let quote = Quote(content: "A", author: "B", context: CoreDataStack.sharedInstance().mainContext)
                 let viewModel = QuoteViewModel(quote: quote)
-                expect(viewModel.content).to(equal("A"))
+                expect(viewModel.content).to(equal("\"A\""))
                 expect(viewModel.author).to(equal("-B"))
             }
         }
