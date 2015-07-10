@@ -33,7 +33,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             }
             
             // If QuoteListViewController present some view via Push pop to root
-            if (navigationController.topViewController is QuotesListViewController) == false {
+            if (navigationController.topViewController is QuoteListViewController) == false {
                 navigationController.popToRootViewControllerAnimated(false)
             }
             

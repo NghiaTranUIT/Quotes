@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="8152.3" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8124.4"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="QuoteTableViewCell" id="qc3-ci-MbC" customClass="QuoteTableViewCell" customModule="Quotes" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="600" height="174"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="qc3-ci-MbC" id="gcq-eo-iHK">
+                <rect key="frame" x="0.0" y="0.0" width="600" height="173"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="l8h-DU-0yw">
+                        <rect key="frame" x="8" y="151" width="584" height="14"/>
+                        <fontDescription key="fontDescription" style="UICTFontTextStyleCaption1"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" placeholderIntrinsicWidth="584" placeholderIntrinsicHeight="128" text="Label" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VqY-wq-hNh">
+                        <rect key="frame" x="8" y="8" width="584" height="135"/>
+                        <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
+                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+                <constraints>
+                    <constraint firstAttribute="trailingMargin" secondItem="VqY-wq-hNh" secondAttribute="trailing" id="8x5-Mo-aIG"/>
+                    <constraint firstItem="l8h-DU-0yw" firstAttribute="leading" secondItem="gcq-eo-iHK" secondAttribute="leading" constant="8" id="D4C-JU-vWz"/>
+                    <constraint firstAttribute="bottomMargin" secondItem="l8h-DU-0yw" secondAttribute="bottom" id="ENQ-p9-CUk"/>
+                    <constraint firstAttribute="topMargin" secondItem="VqY-wq-hNh" secondAttribute="top" id="Pf3-bX-v6T"/>
+                    <constraint firstItem="l8h-DU-0yw" firstAttribute="top" secondItem="VqY-wq-hNh" secondAttribute="bottom" constant="8" id="Ppq-Qj-HfF"/>
+                    <constraint firstAttribute="leadingMargin" secondItem="VqY-wq-hNh" secondAttribute="leading" id="cO7-vN-D5F"/>
+                    <constraint firstAttribute="trailing" secondItem="l8h-DU-0yw" secondAttribute="trailing" constant="8" id="p03-PN-XTS"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="authorLabel" destination="l8h-DU-0yw" id="PNU-5x-IS9"/>
+                <outlet property="quoteLabel" destination="VqY-wq-hNh" id="81Y-hb-tH8"/>
+            </connections>
+        </tableViewCell>
+    </objects>
+</document>
