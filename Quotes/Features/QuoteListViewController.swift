@@ -12,7 +12,8 @@ import Model
 import UIKit
 
 private enum SegueIdentifier: String {
-    case AddQuote, ShowQuote
+    case AddQuote = "AddQuote"
+    case ShowQuote = "ShowQuote"
 }
 
 class QuoteListViewController: QuoteListBaseTableViewController, UISearchBarDelegate, UISearchControllerDelegate {
