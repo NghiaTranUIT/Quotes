@@ -19,17 +19,21 @@ class QuoteDetailsViewController: UIViewController {
         
         contentLabel.text = viewModel.content
         authorLabel.text = viewModel.author
-        
-        userActivity = viewModel.userActivity
     }
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
+        userActivity = viewModel.userActivity
         userActivity?.becomeCurrent()
     }
     
     override func viewDidDisappear(animated: Bool) {
         super.viewDidDisappear(animated)
         userActivity?.invalidate()
+    }
+    
+    override func updateUserActivityState(activity: NSUserActivity) {
+        activity.addUserInfoEntriesFromDictionary([QuoteUserActivityKey.Identifier.rawValue: viewModel.identifier])
+        super.updateUserActivityState(activity)
     }
 }

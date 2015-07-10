@@ -17,13 +17,12 @@ extension Quote {
         var searchableItems = [CSSearchableItem]()
         
         for quote in quotes {
-            let model = QuoteViewModel(quote: quote)
             // Create set of attributes and searchable item
             let attributeSet = CSSearchableItemAttributeSet(itemContentType: kUTTypeText as String)
             attributeSet.title = "Quote from " + quote.author
-            attributeSet.contentDescription = model.contentExcerpt
+            attributeSet.contentDescription = quote.content.excerpt(100)
             attributeSet.keywords = [quote.author]
-            attributeSet.textContent = model.content
+            attributeSet.textContent = quote.content
             
             let searchableItem = CSSearchableItem(uniqueIdentifier: quote.identifier, domainIdentifier: "com.tomaszszulc.Quotes", attributeSet: attributeSet)
             searchableItems.append(searchableItem)

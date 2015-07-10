@@ -25,6 +25,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     func application(application: UIApplication, continueUserActivity userActivity: NSUserActivity, restorationHandler: ([AnyObject]?) -> Void) -> Bool {
+        print("Received a payload via handoff: \(userActivity.userInfo)")
         if let navigationController = self.window?.rootViewController as? UINavigationController {
             // If QuoteListViewController presents something modally just dismiss it
             if let presentedViewController = navigationController.presentedViewController {

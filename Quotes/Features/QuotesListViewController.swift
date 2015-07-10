@@ -64,7 +64,15 @@ class QuotesListViewController: UIViewController, UITableViewDelegate, UITableVi
     
     override func restoreUserActivityState(activity: NSUserActivity) {
         if let userInfo = activity.userInfo as? Dictionary<String, AnyObject> {
-            if let uniqueIdentifier = userInfo[CSSearchableItemActivityIdentifier] as? String {
+            print(userInfo)
+            let quoteIdentifier: String?
+            if activity.activityType == CSSearchableItemActionType {
+                quoteIdentifier = userInfo[CSSearchableItemActivityIdentifier] as? String
+            } else {
+                quoteIdentifier = userInfo["quote.identifier"] as? String
+            }
+            
+            if let uniqueIdentifier = quoteIdentifier {
                 if let quote = Quote.find(uniqueIdentifier, context: CoreDataStack.sharedInstance().mainContext) {
                     showDetailsForQuote(quote)
                 }

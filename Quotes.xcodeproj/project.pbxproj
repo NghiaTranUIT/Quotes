@@ -22,13 +22,14 @@
 		6DBDA9ED1B4DBAC700109CAD /* Quick.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6DF150151B4DB8C800E23D9C /* Quick.framework */; };
 		6DBDA9F21B4DBDA600109CAD /* QuoteSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DBDA9F11B4DBDA600109CAD /* QuoteSpec.swift */; };
 		6DBDA9F71B4DBE9E00109CAD /* QuoteViewModelSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DBDA9F61B4DBE9E00109CAD /* QuoteViewModelSpec.swift */; };
+		6DBE95031B4FE5DE0030750D /* Quote+UserActivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DBE95021B4FE5DE0030750D /* Quote+UserActivity.swift */; };
 		6DD3E70A1B4D927F0094CFA3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DD3E7091B4D927F0094CFA3 /* AppDelegate.swift */; };
 		6DD3E70F1B4D927F0094CFA3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6DD3E70D1B4D927F0094CFA3 /* Main.storyboard */; };
 		6DD3E7111B4D927F0094CFA3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6DD3E7101B4D927F0094CFA3 /* Assets.xcassets */; };
 		6DD3E7141B4D927F0094CFA3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6DD3E7121B4D927F0094CFA3 /* LaunchScreen.storyboard */; };
 		6DD3E71D1B4D92F20094CFA3 /* QuoteTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DD3E71C1B4D92F20094CFA3 /* QuoteTableViewCell.swift */; };
 		6DD3E7241B4D9C3D0094CFA3 /* QuoteViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DD3E7231B4D9C3D0094CFA3 /* QuoteViewModel.swift */; };
-		6DFD48911B4EFE4700E2A7A8 /* String+Substring.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DFD48901B4EFE4700E2A7A8 /* String+Substring.swift */; };
+		6DFD48911B4EFE4700E2A7A8 /* String+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DFD48901B4EFE4700E2A7A8 /* String+Utils.swift */; };
 		6DFD48961B4F108B00E2A7A8 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6DFD48941B4F105700E2A7A8 /* CoreData.framework */; };
 		6DFD48991B4F116000E2A7A8 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6DFD48981B4F116000E2A7A8 /* MobileCoreServices.framework */; };
 		6DFD48A11B4F229C00E2A7A8 /* ActivityType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DFD48A01B4F229C00E2A7A8 /* ActivityType.swift */; };
@@ -81,6 +82,7 @@
 		6DBDA9E41B4DBA4400109CAD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6DBDA9F11B4DBDA600109CAD /* QuoteSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuoteSpec.swift; sourceTree = "<group>"; };
 		6DBDA9F61B4DBE9E00109CAD /* QuoteViewModelSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuoteViewModelSpec.swift; sourceTree = "<group>"; };
+		6DBE95021B4FE5DE0030750D /* Quote+UserActivity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Quote+UserActivity.swift"; sourceTree = "<group>"; };
 		6DD3E7061B4D927F0094CFA3 /* Quotes.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Quotes.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6DD3E7091B4D927F0094CFA3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		6DD3E70E1B4D927F0094CFA3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -92,7 +94,7 @@
 		6DD3E7231B4D9C3D0094CFA3 /* QuoteViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuoteViewModel.swift; sourceTree = "<group>"; };
 		6DF150151B4DB8C800E23D9C /* Quick.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Quick.framework; path = Carthage/Build/iOS/Quick.framework; sourceTree = "<group>"; };
 		6DF150181B4DB9D300E23D9C /* Nimble.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Nimble.framework; path = Carthage/Build/iOS/Nimble.framework; sourceTree = "<group>"; };
-		6DFD48901B4EFE4700E2A7A8 /* String+Substring.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+Substring.swift"; sourceTree = "<group>"; };
+		6DFD48901B4EFE4700E2A7A8 /* String+Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+Utils.swift"; sourceTree = "<group>"; };
 		6DFD48941B4F105700E2A7A8 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		6DFD48981B4F116000E2A7A8 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
 		6DFD48A01B4F229C00E2A7A8 /* ActivityType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActivityType.swift; sourceTree = "<group>"; };
@@ -274,7 +276,8 @@
 				6DFD48A01B4F229C00E2A7A8 /* ActivityType.swift */,
 				6DFD48A21B4F8F8B00E2A7A8 /* Quote+DebugPopulate.swift */,
 				6DFD48A41B4F901100E2A7A8 /* Quote+CoreSpotlight.swift */,
-				6DFD48901B4EFE4700E2A7A8 /* String+Substring.swift */,
+				6DBE95021B4FE5DE0030750D /* Quote+UserActivity.swift */,
+				6DFD48901B4EFE4700E2A7A8 /* String+Utils.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -391,6 +394,7 @@
 					};
 					6DD3E7051B4D927F0094CFA3 = {
 						CreatedOnToolsVersion = 7.0;
+						DevelopmentTeam = 7HTJY423B9;
 					};
 				};
 			};
@@ -489,10 +493,11 @@
 			files = (
 				6D0777FC1B4EEFBB00613158 /* QuoteDetailsViewController.swift in Sources */,
 				6D9A52CC1B4DA524002F911B /* QuotesListViewController.swift in Sources */,
+				6DBE95031B4FE5DE0030750D /* Quote+UserActivity.swift in Sources */,
 				6DD3E7241B4D9C3D0094CFA3 /* QuoteViewModel.swift in Sources */,
 				6DFD48A51B4F901100E2A7A8 /* Quote+CoreSpotlight.swift in Sources */,
 				6DD3E70A1B4D927F0094CFA3 /* AppDelegate.swift in Sources */,
-				6DFD48911B4EFE4700E2A7A8 /* String+Substring.swift in Sources */,
+				6DFD48911B4EFE4700E2A7A8 /* String+Utils.swift in Sources */,
 				6DD3E71D1B4D92F20094CFA3 /* QuoteTableViewCell.swift in Sources */,
 				6DFD48A31B4F8F8B00E2A7A8 /* Quote+DebugPopulate.swift in Sources */,
 				6DFD48A11B4F229C00E2A7A8 /* ActivityType.swift in Sources */,
@@ -705,6 +710,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_MODULES_AUTOLINK = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				FRAMEWORK_SEARCH_PATHS = "$(SRCROOT)/Carthage/Build/iOS/";
 				GCC_GENERATE_TEST_COVERAGE_FILES = YES;
@@ -714,6 +720,7 @@
 				OTHER_LDFLAGS = "";
 				PRODUCT_BUNDLE_IDENTIFIER = com.tomaszszulc.Quotes;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "3291befe-b41d-45d0-b768-13516bdb0063";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -723,6 +730,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_MODULES_AUTOLINK = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				FRAMEWORK_SEARCH_PATHS = "$(SRCROOT)/Carthage/Build/iOS/";
 				GCC_GENERATE_TEST_COVERAGE_FILES = YES;
@@ -732,6 +740,7 @@
 				OTHER_LDFLAGS = "";
 				PRODUCT_BUNDLE_IDENTIFIER = com.tomaszszulc.Quotes;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "3291befe-b41d-45d0-b768-13516bdb0063";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
