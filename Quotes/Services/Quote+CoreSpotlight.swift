@@ -23,6 +23,7 @@ extension Quote {
             attributeSet.title = "Quote from " + quote.author
             attributeSet.contentDescription = model.contentExcerpt
             attributeSet.keywords = [quote.author]
+            attributeSet.textContent = model.content
             
             let searchableItem = CSSearchableItem(uniqueIdentifier: quote.identifier, domainIdentifier: "com.tomaszszulc.Quotes", attributeSet: attributeSet)
             searchableItems.append(searchableItem)
