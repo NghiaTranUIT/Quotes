@@ -10,4 +10,5 @@ import Foundation
 
 enum ActivityType: String {
     case BrowseQuote = "com.tomaszszulc.Quotes.browseQuote"
+    case QuotesList = "com.tomaszszulc.Quotes.quotesList"
 }

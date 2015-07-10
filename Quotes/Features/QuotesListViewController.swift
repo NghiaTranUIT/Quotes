@@ -31,6 +31,19 @@ class QuotesListViewController: UIViewController, UITableViewDelegate, UITableVi
         super.viewWillAppear(animated)
         quotes = Quote.findAll(CoreDataStack.sharedInstance().mainContext)
         tableView.reloadData()
+        startUserActivity()
+    }
+    
+    override func viewWillDisappear(animated: Bool) {
+        super.viewWillDisappear(animated)
+        userActivity?.invalidate()
+    }
+    
+    func startUserActivity() {
+        let activity = NSUserActivity(activityType: ActivityType.QuotesList.rawValue)
+        activity.title = "Viewing Quotes List"
+        userActivity = activity
+        userActivity?.becomeCurrent()
     }
     
     private func debug_populateQuotes() {

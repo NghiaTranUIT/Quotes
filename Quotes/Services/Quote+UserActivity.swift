@@ -19,9 +19,9 @@ extension Quote {
         let activity = NSUserActivity(activityType: ActivityType.BrowseQuote.rawValue)
         activity.title = "Reading " + self.author + " quote"
         activity.userInfo = [QuoteUserActivityKey.Identifier.rawValue: self.identifier]
-        print("saved?: \(activity.userInfo)")
         // Core Spotlight support
         if #available(iOS 9.0, *) {
+            activity.contentAttributeSet = self.searchableItemAttributeSet()
             activity.keywords = Set([self.author])
             activity.eligibleForSearch = true
             activity.eligibleForHandoff = true

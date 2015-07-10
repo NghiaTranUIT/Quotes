@@ -13,19 +13,23 @@ import Model
 
 extension Quote {
     @available(iOS 9.0, *)
+    func searchableItemAttributeSet() -> CSSearchableItemAttributeSet {
+        let attributeSet = CSSearchableItemAttributeSet(itemContentType: kUTTypeText as String)
+        attributeSet.title = "Quote from " + self.author
+        attributeSet.contentDescription = self.content.fullTextOrExcerpt(100)
+        attributeSet.keywords = ["reading", self.author]
+        attributeSet.textContent = self.content
+        return attributeSet
+    }
+    
+    @available(iOS 9.0, *)
     class func index(quotes: [Quote]) {
         var searchableItems = [CSSearchableItem]()
         
         for quote in quotes {
             // Create set of attributes and searchable item
-            let attributeSet = CSSearchableItemAttributeSet(itemContentType: kUTTypeText as String)
-            attributeSet.title = "Quote from " + quote.author
-            attributeSet.contentDescription = quote.content.excerpt(100)
-            attributeSet.keywords = [quote.author]
-            attributeSet.textContent = quote.content
-            
-            let searchableItem = CSSearchableItem(uniqueIdentifier: quote.identifier, domainIdentifier: "com.tomaszszulc.Quotes", attributeSet: attributeSet)
-            searchableItems.append(searchableItem)
+            let item = CSSearchableItem(uniqueIdentifier: quote.identifier, domainIdentifier: "com.tomaszszulc.Quotes", attributeSet: quote.searchableItemAttributeSet())
+            searchableItems.append(item)
         }
         
         // Index
