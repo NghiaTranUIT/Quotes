@@ -17,7 +17,10 @@ private enum SegueIdentifier: String {
 }
 
 class QuoteListViewController: QuoteListBaseTableViewController, UISearchBarDelegate, UISearchControllerDelegate {
-    
+    // Used for downloading data from backend
+    private var operationQueue: NSOperationQueue!
+
+    // Search functionality
     private var searchController: UISearchController!
     private var resultsTableController: QuoteListBaseTableViewController!
     private var resultsUpdater = QuoteResultsUpdater()
@@ -26,13 +29,10 @@ class QuoteListViewController: QuoteListBaseTableViewController, UISearchBarDele
     private var searchControllerSearchFieldWasFirstResponder = false
     
     override var quotes: [Quote] {
-        didSet {
-            resultsUpdater.quotes = quotes
-        }
+        didSet { resultsUpdater.quotes = quotes }
     }
     
-    private var operationQueue: NSOperationQueue!
-    
+    // MARK: - Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
         configureOperationQueue()
@@ -110,7 +110,12 @@ class QuoteListViewController: QuoteListBaseTableViewController, UISearchBarDele
     // MARK: - UITableView
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         super.tableView(tableView, didSelectRowAtIndexPath: indexPath)
-        showDetailsForQuote(quotes[indexPath.row])
+        
+        if tableView == self.tableView {
+            showDetailsForQuote(quotes[indexPath.row])
+        } else if tableView == resultsTableController.tableView {
+            showDetailsForQuote(resultsTableController.quotes[indexPath.row])
+        }
     }
     
     func showDetailsForQuote(quote: Quote) {
