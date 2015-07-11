@@ -42,7 +42,7 @@ class QuoteListViewController: QuoteListBaseTableViewController, UISearchBarDele
     private func configureOperationQueue() {
         operationQueue = NSOperationQueue()
         operationQueue.maxConcurrentOperationCount = 1
-        operationQueue.qualityOfService = .UserInteractive
+        operationQueue.qualityOfService = .UserInitiated
         operationQueue.name = "quotes.list.queue"
     }
     
