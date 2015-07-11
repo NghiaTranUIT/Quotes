@@ -17,11 +17,11 @@ class QuoteViewModel {
     }
     
     var content: String {
-        return "\"" + quote.content + "\""
+        return quote.content
     }
     
     var author: String {
-        return "-" + quote.author
+        return quote.author.uppercaseString
     }
     
     var contentExcerpt: String {
