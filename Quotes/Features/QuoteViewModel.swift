@@ -33,6 +33,6 @@ class QuoteViewModel {
     }
     
     var identifier: String {
-        return quote.identifier
+        return quote.objectId
     }
 }

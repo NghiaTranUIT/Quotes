@@ -4,7 +4,6 @@
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8124.4"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
-        <capability name="Navigation items with more than one left or right bar item" minToolsVersion="7.0"/>
     </dependencies>
     <customFonts key="customFonts">
         <mutableArray key="HelveticaNeue.ttc">
@@ -33,18 +32,11 @@
                     </tableView>
                     <toolbarItems/>
                     <navigationItem key="navigationItem" title="Quotes" id="iTX-bq-f3V">
-                        <rightBarButtonItems>
-                            <barButtonItem systemItem="add" id="2w7-vn-ILK">
-                                <connections>
-                                    <segue destination="rYC-48-4te" kind="presentation" identifier="AddQuote" id="wtt-mZ-PdE"/>
-                                </connections>
-                            </barButtonItem>
-                            <barButtonItem systemItem="refresh" id="vxG-Ka-39t">
-                                <connections>
-                                    <action selector="populateQuotes:" destination="nxb-Zj-XH2" id="Ejt-58-gwe"/>
-                                </connections>
-                            </barButtonItem>
-                        </rightBarButtonItems>
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="2w7-vn-ILK">
+                            <connections>
+                                <segue destination="rYC-48-4te" kind="presentation" identifier="AddQuote" id="wtt-mZ-PdE"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <segue destination="Bhy-l9-YM0" kind="show" identifier="ShowQuote" id="1r7-BM-8g1"/>
