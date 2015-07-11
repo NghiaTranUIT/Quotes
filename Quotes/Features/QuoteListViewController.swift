@@ -31,9 +31,19 @@ class QuoteListViewController: QuoteListBaseTableViewController, UISearchBarDele
         }
     }
     
+    private var operationQueue: NSOperationQueue!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        configureOperationQueue()
         configureSearchController()
+    }
+    
+    private func configureOperationQueue() {
+        operationQueue = NSOperationQueue()
+        operationQueue.maxConcurrentOperationCount = 1
+        operationQueue.qualityOfService = .UserInteractive
+        operationQueue.name = "quotes.list.queue"
     }
     
     private func configureSearchController() {
@@ -53,9 +63,9 @@ class QuoteListViewController: QuoteListBaseTableViewController, UISearchBarDele
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
-        quotes = Quote.findAll(CoreDataStack.sharedInstance().mainContext)
         startUserActivity()
-        tableView.reloadData()
+        refreshAll()
+        downloadPublicQuotes()
     }
     
     override func viewDidAppear(animated: Bool) {
@@ -85,15 +95,15 @@ class QuoteListViewController: QuoteListBaseTableViewController, UISearchBarDele
         userActivity?.becomeCurrent()
     }
     
-    @IBAction func populateQuotes(sender: AnyObject) {
-        let populatedQuotes = Quote.debugPopulate(CoreDataStack.sharedInstance().mainContext)
-        quotes += populatedQuotes
-        
-        if #available(iOS 9.0, *) {
-            Quote.index(populatedQuotes)
-        }
-        
-        do { try CoreDataStack.sharedInstance().mainContext.save() } catch { /* do nothing */ }
+    private func downloadPublicQuotes() {
+        let context = CoreDataStack.sharedInstance().mainContext
+        operationQueue.addOperation(GetAllQuotesOperation(context: context) {
+            dispatch_async(dispatch_get_main_queue()) { self.refreshAll() }
+            })
+    }
+    
+    private func refreshAll() {
+        quotes = Quote.findAll(CoreDataStack.sharedInstance().mainContext)
         tableView.reloadData()
     }
     

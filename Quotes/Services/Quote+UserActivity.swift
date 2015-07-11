@@ -21,7 +21,7 @@ extension Quote {
         let activity = NSUserActivity(activityType: ActivityType.BrowseQuote.rawValue)
         activity.title = "Reading " + self.author + " quote"
         activity.userInfo = [
-            QuoteUserActivityKey.Identifier.rawValue: self.identifier,
+            QuoteUserActivityKey.Identifier.rawValue: self.objectId,
             QuoteUserActivityKey.Content.rawValue: self.content,
             QuoteUserActivityKey.Author.rawValue: self.author
         ]

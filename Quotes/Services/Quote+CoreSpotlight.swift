@@ -28,7 +28,7 @@ extension Quote {
         
         for quote in quotes {
             // Create set of attributes and searchable item
-            let item = CSSearchableItem(uniqueIdentifier: quote.identifier, domainIdentifier: "com.tomaszszulc.Quotes", attributeSet: quote.searchableItemAttributeSet())
+            let item = CSSearchableItem(uniqueIdentifier: quote.objectId, domainIdentifier: "com.tomaszszulc.Quotes", attributeSet: quote.searchableItemAttributeSet())
             searchableItems.append(item)
         }
         

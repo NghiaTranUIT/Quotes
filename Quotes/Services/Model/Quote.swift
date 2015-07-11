@@ -13,17 +13,18 @@ import CoreData
 public class Quote: NSManagedObject {
     @NSManaged public var author: String
     @NSManaged public var content: String
-    @NSManaged private var identifierValue: String
-
-    public var identifier: String {
-        return identifierValue
-    }
-    
-    public convenience init(content: String, author: String, context: NSManagedObjectContext) {
+    @NSManaged public var objectId: String
+        
+    public convenience init(content: String, author: String, objectId: String? = nil, context: NSManagedObjectContext) {
         self.init(context)
         self.content = content
         self.author = author
-        self.identifierValue = NSUUID().UUIDString + "-\(NSDate().timeIntervalSince1970)"
+        
+        if let identifier = objectId {
+            self.objectId = identifier
+        } else {
+            self.objectId = NSUUID().UUIDString + "-\(NSDate().timeIntervalSince1970)"
+        }
     }
     
     convenience init(_ context: NSManagedObjectContext) {
@@ -33,7 +34,7 @@ public class Quote: NSManagedObject {
     
     public class func find(identifier: String, context: NSManagedObjectContext) -> Quote? {
         let fetchRequest = quoteFetchRequest()
-        fetchRequest.predicate = NSPredicate(format: "identifierValue == %@", identifier)
+        fetchRequest.predicate = NSPredicate(format: "objectId == %@", identifier)
         do {
             return try context.executeFetchRequest(fetchRequest).first as? Quote
         } catch {
