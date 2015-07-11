@@ -11,6 +11,8 @@ import Model
 
 enum QuoteUserActivityKey: String {
     case Identifier = "quote.identifier"
+    case Content = "quote.content"
+    case Author = "quote.author"
 }
 
 extension Quote {
@@ -18,7 +20,11 @@ extension Quote {
     var userActivity: NSUserActivity {
         let activity = NSUserActivity(activityType: ActivityType.BrowseQuote.rawValue)
         activity.title = "Reading " + self.author + " quote"
-        activity.userInfo = [QuoteUserActivityKey.Identifier.rawValue: self.identifier]
+        activity.userInfo = [
+            QuoteUserActivityKey.Identifier.rawValue: self.identifier,
+            QuoteUserActivityKey.Content.rawValue: self.content,
+            QuoteUserActivityKey.Author.rawValue: self.author
+        ]
         // Core Spotlight support
         if #available(iOS 9.0, *) {
             activity.contentAttributeSet = self.searchableItemAttributeSet()

@@ -31,9 +31,4 @@ class QuoteDetailsViewController: UIViewController {
         super.viewDidDisappear(animated)
         userActivity?.invalidate()
     }
-    
-    override func updateUserActivityState(activity: NSUserActivity) {
-        activity.addUserInfoEntriesFromDictionary([QuoteUserActivityKey.Identifier.rawValue: viewModel.identifier])
-        super.updateUserActivityState(activity)
-    }
 }
