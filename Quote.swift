@@ -2,20 +2,16 @@
 //  Quote.swift
 //  Quotes
 //
-//  Created by Tomasz Szulc on 08/07/15.
+//  Created by Tomasz Szulc on 12/07/15.
 //  Copyright © 2015 Tomasz Szulc. All rights reserved.
 //
 
 import Foundation
 import CoreData
 
-@objc (Quote)
+@objc(Quote)
 public class Quote: NSManagedObject {
-    @NSManaged public var author: String
-    @NSManaged public var content: String
-    @NSManaged public var readCount: NSNumber
-    @NSManaged public var objectId: String
-        
+
     public convenience init(content: String, author: String, readCount: Int = 0, objectId: String? = nil, context: NSManagedObjectContext) {
         self.init(context)
         self.content = content
@@ -47,7 +43,7 @@ public class Quote: NSManagedObject {
     public class func findAll(context: NSManagedObjectContext) -> [Quote] {
         let fetchRequest = quoteFetchRequest()
         do {
-             if let result = try context.executeFetchRequest(fetchRequest) as? [Quote] {
+            if let result = try context.executeFetchRequest(fetchRequest) as? [Quote] {
                 return result
             } else {
                 return [Quote]()
