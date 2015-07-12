@@ -4,8 +4,9 @@
         <attribute name="author" attributeType="String" syncable="YES"/>
         <attribute name="content" attributeType="String" syncable="YES"/>
         <attribute name="objectId" attributeType="String" syncable="YES"/>
+        <attribute name="readCount" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Quote" positionX="-63" positionY="-18" width="128" height="90"/>
+        <element name="Quote" positionX="-63" positionY="-18" width="128" height="105"/>
     </elements>
 </model>

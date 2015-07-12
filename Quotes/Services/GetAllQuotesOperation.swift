@@ -9,7 +9,7 @@
 import Foundation
 import CoreData
 
-class GetAllQuotesOperation: NSOperation, DownloadOperationDelegate {
+class GetAllQuotesOperation: NSOperation, NetworkOperationDelegate {
     private var queue = NSOperationQueue()
     private var parseQuotesOp: ParseQuotesOperation!
     
@@ -23,7 +23,7 @@ class GetAllQuotesOperation: NSOperation, DownloadOperationDelegate {
         
         // Create download, parse and finish operations
         let request = NSMutableURLRequest.parseRequest("classes/Quote", method: "GET")
-        let downloadOp = DownloadOperation(request: request, delegate: self)
+        let downloadOp = NetworkOperation(request: request, delegate: self)
         
         parseQuotesOp = ParseQuotesOperation(context: context)
         parseQuotesOp.addDependency(downloadOp)
@@ -34,11 +34,15 @@ class GetAllQuotesOperation: NSOperation, DownloadOperationDelegate {
         queue.addOperations([downloadOp, parseQuotesOp, finishOp], waitUntilFinished: false)
     }
     
-    // MARK: - DownloadOperationDelegate
+    // MARK: - NetworkOperationDelegate
     // Delegate method that updates parsing operation with data to be parsed
-    func downloadOperation(operation: DownloadOperation, didFinishDownloadingWithResult result: DownloadOperationResult) {
+    func networkOperation(operation: NetworkOperation, didFinishWithResult result: NetworkOperationResult) {
         if result.success {
-            parseQuotesOp.json = result.json!
+            do {
+                parseQuotesOp.json = try NSJSONSerialization.JSONObjectWithData(result.data!, options: NSJSONReadingOptions.MutableLeaves) as? Dictionary<String, AnyObject>
+            } catch {
+                queue.cancelAllOperations()
+            }
         } else {
             queue.cancelAllOperations()
         }

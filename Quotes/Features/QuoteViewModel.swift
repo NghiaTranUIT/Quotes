@@ -10,7 +10,7 @@ import Foundation
 import Model
 
 class QuoteViewModel {
-    private let quote: Quote
+    let quote: Quote
     
     init(quote: Quote) {
         self.quote = quote
@@ -34,5 +34,17 @@ class QuoteViewModel {
     
     var identifier: String {
         return quote.objectId
+    }
+    
+    var readCountString: String {
+        if quote.readCount.integerValue == 1 {
+            return "Read once"
+        } else {
+            return "Read \(quote.readCount) times"
+        }
+    }
+    
+    var showReadCount: Bool {
+        return quote.readCount.integerValue != 0
     }
 }

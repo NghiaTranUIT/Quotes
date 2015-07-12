@@ -7,24 +7,54 @@
 //
 
 import UIKit
+import Model
 
 class QuoteDetailsViewController: UIViewController {
     @IBOutlet private var contentLabel: UILabel!
     @IBOutlet private var authorLabel: UILabel!
+    @IBOutlet private var readCountLabel: UILabel!
     
-    var viewModel: QuoteViewModel!
+    private var queue: NSOperationQueue!
+    
+    var viewModel: QuoteViewModel! {
+        didSet {
+            update()
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        contentLabel.text = viewModel.content
-        authorLabel.text = viewModel.author
+        configureOperationQueue()
     }
     
+    private func update() {
+        contentLabel?.text = viewModel.content
+        authorLabel?.text = viewModel.author
+        readCountLabel?.text = viewModel.readCountString
+        readCountLabel?.hidden = !viewModel.showReadCount
+    }
+    
+    private func configureOperationQueue() {
+        queue = NSOperationQueue()
+        queue.maxConcurrentOperationCount = 1
+        queue.qualityOfService = .UserInitiated
+    }
+
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
+        update()
         userActivity = viewModel.userActivity
         userActivity?.becomeCurrent()
+        updateReadCount()
+    }
+    
+    private func updateReadCount() {
+        queue.addOperation(UpdateReadCountOperation(quote: viewModel.quote, completionHandler: {
+            dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                let quote = Quote.find(self.viewModel.quote.objectId, context: CoreDataStack.sharedInstance().mainContext)
+                self.viewModel = QuoteViewModel(quote: quote!)
+            })
+        }))
     }
     
     override func viewDidDisappear(animated: Bool) {

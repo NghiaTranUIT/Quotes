@@ -35,12 +35,14 @@ class ParseQuotesOperation: NSOperation {
             for dictionary in quotesJSON {
                 if let author = dictionary["author"] as? String,
                     let content = dictionary["content"] as? String,
+                    let readCount = dictionary["readCount"] as? Int,
                     let objectId = dictionary["objectId"] as? String {
                         if let quote = Quote.find(objectId, context: self.context) {
                             quote.author = author
                             quote.content = content
+                            quote.readCount = readCount
                         } else {
-                            _ = Quote(content: content, author: author, objectId: objectId, context: self.context)
+                            _ = Quote(content: content, author: author, readCount: readCount, objectId: objectId, context: self.context)
                         }
                 } else {
                     print("Cannot parse \(dictionary)")

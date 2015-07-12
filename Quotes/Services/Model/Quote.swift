@@ -13,12 +13,14 @@ import CoreData
 public class Quote: NSManagedObject {
     @NSManaged public var author: String
     @NSManaged public var content: String
+    @NSManaged public var readCount: NSNumber
     @NSManaged public var objectId: String
         
-    public convenience init(content: String, author: String, objectId: String? = nil, context: NSManagedObjectContext) {
+    public convenience init(content: String, author: String, readCount: Int = 0, objectId: String? = nil, context: NSManagedObjectContext) {
         self.init(context)
         self.content = content
         self.author = author
+        self.readCount = NSNumber(integer:readCount)
         
         if let identifier = objectId {
             self.objectId = identifier

@@ -70,11 +70,19 @@
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Read %d times" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Kig-J9-Rqt">
+                                <rect key="frame" x="468" y="560" width="113" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="UC7-Tl-grV" firstAttribute="leading" secondItem="UEu-nK-nFO" secondAttribute="leadingMargin" id="35i-K8-8oj"/>
+                            <constraint firstItem="Kig-J9-Rqt" firstAttribute="trailing" secondItem="UEu-nK-nFO" secondAttribute="trailingMargin" id="9Pr-5W-ukI"/>
                             <constraint firstItem="UC7-Tl-grV" firstAttribute="top" secondItem="I1a-45-OFX" secondAttribute="bottom" constant="8" id="FW5-Ys-owH"/>
+                            <constraint firstItem="PNN-Nw-Dnq" firstAttribute="top" secondItem="Kig-J9-Rqt" secondAttribute="bottom" constant="20" id="UVO-sZ-qwZ"/>
                             <constraint firstItem="I1a-45-OFX" firstAttribute="top" secondItem="0UY-KT-FgB" secondAttribute="bottom" constant="8" id="bOJ-gL-QIM"/>
                             <constraint firstItem="I1a-45-OFX" firstAttribute="leading" secondItem="UEu-nK-nFO" secondAttribute="leadingMargin" id="fV5-Tx-eWI"/>
                             <constraint firstItem="I1a-45-OFX" firstAttribute="trailing" secondItem="UEu-nK-nFO" secondAttribute="trailingMargin" id="nxp-iO-qOu"/>
@@ -84,6 +92,7 @@
                     <connections>
                         <outlet property="authorLabel" destination="UC7-Tl-grV" id="uCV-hL-pmg"/>
                         <outlet property="contentLabel" destination="I1a-45-OFX" id="edt-UX-KbT"/>
+                        <outlet property="readCountLabel" destination="Kig-J9-Rqt" id="6xD-XU-Slx"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iad-0z-k90" userLabel="First Responder" sceneMemberID="firstResponder"/>

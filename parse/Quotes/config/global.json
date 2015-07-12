@@ -1,0 +1,14 @@
+{
+  "global": {
+    "parseVersion": "1.4.2"
+  },
+  "applications": {
+    "Quotes": {
+      "applicationId": "PK3BJk8ohNVtIQ3mBvZSZLZHnzn2kF3yXgG8UAGS",
+      "masterKey": "H5zA76oV1UHN1GmxQwzNkrYN8bwsd9Kbf2xFlDi4"
+    },
+    "_default": {
+      "link": "Quotes"
+    }
+  }
+}
