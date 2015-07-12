@@ -10,7 +10,6 @@ import Model
 import UIKit
 
 class QuoteResultsUpdater: NSObject, UISearchResultsUpdating {
-    
     var quotes = [Quote]()
     
     func updateSearchResultsForSearchController(searchController: UISearchController) {

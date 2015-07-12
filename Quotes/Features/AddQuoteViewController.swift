@@ -78,12 +78,7 @@ class AddQuoteViewController: UIViewController, UITextViewDelegate, UITextFieldD
     
     @IBAction func savePressed(sender: AnyObject) {
         let quote = Quote(content: quoteContentTextView.text, author: saidByTextField.text!, context: CoreDataStack.sharedInstance().mainContext)
-       
-        do {
-           try  CoreDataStack.sharedInstance().mainContext.save()
-        } catch {
-            /// do nothing
-        }
+        do { try  CoreDataStack.sharedInstance().mainContext.save() } catch {}
         
         if #available(iOS 9.0, *) {
             Quote.index([quote])

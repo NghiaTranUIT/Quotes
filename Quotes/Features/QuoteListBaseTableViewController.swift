@@ -10,7 +10,6 @@ import Model
 import UIKit
 
 class QuoteListBaseTableViewController: UITableViewController {
-
     var quotes = [Quote]()
     
     override func viewDidLoad() {
