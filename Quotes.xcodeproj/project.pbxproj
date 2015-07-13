@@ -255,6 +255,16 @@
 			name = "Quotes List";
 			sourceTree = "<group>";
 		};
+		6DCA7F321B52E7FF009F3988 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				6DD3E7121B4D927F0094CFA3 /* LaunchScreen.storyboard */,
+				6DD3E70D1B4D927F0094CFA3 /* Main.storyboard */,
+				6DD3E7151B4D927F0094CFA3 /* Info.plist */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
 		6DD3E6FD1B4D927F0094CFA3 = {
 			isa = PBXGroup;
 			children = (
@@ -283,9 +293,7 @@
 				6DD3E71B1B4D92A50094CFA3 /* Features */,
 				6DD3E71F1B4D93990094CFA3 /* Services */,
 				6DD3E7101B4D927F0094CFA3 /* Assets.xcassets */,
-				6DD3E7121B4D927F0094CFA3 /* LaunchScreen.storyboard */,
-				6DD3E70D1B4D927F0094CFA3 /* Main.storyboard */,
-				6DD3E7151B4D927F0094CFA3 /* Info.plist */,
+				6DCA7F321B52E7FF009F3988 /* Resources */,
 			);
 			path = Quotes;
 			sourceTree = "<group>";
