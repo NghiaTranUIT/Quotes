@@ -6,7 +6,6 @@
 //  Copyright © 2015 Tomasz Szulc. All rights reserved.
 //
 
-import UIKit
 import Model
 
 // Parses JSON content.

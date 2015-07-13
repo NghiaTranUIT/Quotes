@@ -6,15 +6,13 @@
 //  Copyright © 2015 Tomasz Szulc. All rights reserved.
 //
 
-import UIKit
-
-typealias OperationCompletionHandler = () -> Void
+import Foundation
 
 class Operation: NSOperation {
-    
     private var startOnMainThread: Bool
     private var finishInMain: Bool
     
+    // keep track of executing and finished states
     private var _executing = false
     private var _finished = false
 
@@ -27,6 +25,11 @@ class Operation: NSOperation {
     }
     
     override func start() {
+        if cancelled {
+            finish()
+            return
+        }
+        
         if startOnMainThread {
             // Check if start is on main thread.
             // If not, call it on main thread and wait for execution.
@@ -35,8 +38,6 @@ class Operation: NSOperation {
                 return
             }
         }
-        
-        print("operation " + (self.name ?? "") + " started")
         
         willChangeValueForKey("isExecuting")
         _executing = true
@@ -47,14 +48,17 @@ class Operation: NSOperation {
     }
     
     override func main() {
+        if cancelled == true && _finished != false {
+            finish()
+            return
+        }
+        
         if finishInMain { finish() }
     }
     
     /// If `finishInMain` is set to `false` you are responible to call
     /// `finish()` method when operation is about to finish.
-    func finish() {
-        print("operation " + (self.name ?? "") + " finished")
-        
+    func finish() {        
         // Change isExecuting to `false` and isFinished to `true`.
         // Taks will be considered finished.
         willChangeValueForKey("isExecuting")
@@ -71,5 +75,10 @@ class Operation: NSOperation {
     
     override var finished: Bool {
         return _finished
+    }
+    
+    override func cancel() {
+        super.cancel()
+        finish()
     }
 }

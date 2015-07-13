@@ -31,16 +31,19 @@ class NetworkOperation: Operation, NSURLConnectionDelegate, NSURLConnectionDataD
         self.connection.start()
     }
     
+    override func cancel() {
+        connection.cancel()
+        super.cancel()
+    }
+    
     // MARK: - NSURLConnectionDelegate
     func connection(connection: NSURLConnection, didFailWithError error: NSError) {
-        print("connection did fail: \(error)")
         delegate.networkOperation(self, didFinishWithResult: (false, nil))
         finish()
     }
     
     // MARK: - NSURLConnectionDataDelegate
     func connection(connection: NSURLConnection, didReceiveData data: NSData) {
-        print("connection did receive data")
         delegate.networkOperation(self, didFinishWithResult: (true, data))
         finish()
     }
