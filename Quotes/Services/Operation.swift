@@ -8,16 +8,22 @@
 
 import UIKit
 
+typealias OperationCompletionHandler = () -> Void
+
 class Operation: NSOperation {
     
     private var startOnMainThread: Bool
+    private var finishInMain: Bool
     
     private var _executing = false
     private var _finished = false
 
-    init(startOnMainThread: Bool = false) {
+    init(completionBlock: (() -> Void)? = nil, startOnMainThread: Bool = false, finishInMain: Bool = true) {
         self.startOnMainThread = startOnMainThread
+        self.finishInMain = finishInMain
         super.init()
+        self.completionBlock = completionBlock
+        self.name = "custom"
     }
     
     override func start() {
@@ -30,25 +36,33 @@ class Operation: NSOperation {
             }
         }
         
-        print("operation \(self) started")
+        print("operation " + (self.name ?? "") + " started")
         
+        willChangeValueForKey("isExecuting")
         _executing = true
+        didChangeValueForKey("isFinished")
         // Call main, maybe other subclasses will want use it?
         // We have to call it manually when overriding `start`.
         main()
     }
     
     override func main() {
-        finish()
+        if finishInMain { finish() }
     }
     
+    /// If `finishInMain` is set to `false` you are responible to call
+    /// `finish()` method when operation is about to finish.
     func finish() {
-        print("operation \(self) finished")
+        print("operation " + (self.name ?? "") + " finished")
         
         // Change isExecuting to `false` and isFinished to `true`.
         // Taks will be considered finished.
+        willChangeValueForKey("isExecuting")
+        willChangeValueForKey("isFinished")
         _executing = false
         _finished = true
+        didChangeValueForKey("isExecuting")
+        didChangeValueForKey("isFinished")
     }
     
     override var executing: Bool {

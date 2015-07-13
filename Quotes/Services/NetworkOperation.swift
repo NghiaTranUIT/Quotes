@@ -2,48 +2,46 @@
 //  NetworkOperation.swift
 //  Quotes
 //
-//  Created by Tomasz Szulc on 12/07/15.
+//  Created by Tomasz Szulc on 13/07/15.
 //  Copyright © 2015 Tomasz Szulc. All rights reserved.
 //
 
-import UIKit
+import Foundation
 
 typealias NetworkOperationResult = (success: Bool, data: NSData?)
 protocol NetworkOperationDelegate {
     func networkOperation(operation: NetworkOperation, didFinishWithResult result: NetworkOperationResult)
 }
 
-class NetworkOperation: NSOperation, NSURLConnectionDelegate, NSURLConnectionDataDelegate {
+class NetworkOperation: Operation, NSURLConnectionDelegate, NSURLConnectionDataDelegate {
     private var connection: NSURLConnection!
     private var delegate: NetworkOperationDelegate!
-    private var semaphore = dispatch_semaphore_create(0)
     
     init(request: NSURLRequest, delegate: NetworkOperationDelegate) {
-        super.init()
+        super.init(startOnMainThread: true, finishInMain: false)
         connection = NSURLConnection(request: request, delegate: self)
         self.delegate = delegate
+        self.name = "network"
     }
     
-    override func main() {
-        // NSURLConnection need to be started on the main thread
-        dispatch_async(dispatch_get_main_queue()) { self.connection.start() }
-        dispatch_semaphore_wait(semaphore, DISPATCH_TIME_FOREVER)
-    }
-    
-    private func unlock() {
-        dispatch_semaphore_signal(semaphore)
+    override func start() {
+        // Call super to start operation on main thread.
+        // NSURLConnection must start on main thread.
+        super.start()
+        self.connection.start()
     }
     
     // MARK: - NSURLConnectionDelegate
     func connection(connection: NSURLConnection, didFailWithError error: NSError) {
-        print("Error downloading quotes")
+        print("connection did fail: \(error)")
         delegate.networkOperation(self, didFinishWithResult: (false, nil))
-        unlock()
+        finish()
     }
     
     // MARK: - NSURLConnectionDataDelegate
     func connection(connection: NSURLConnection, didReceiveData data: NSData) {
+        print("connection did receive data")
         delegate.networkOperation(self, didFinishWithResult: (true, data))
-        unlock()
+        finish()
     }
 }
