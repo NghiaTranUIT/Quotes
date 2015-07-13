@@ -9,42 +9,48 @@
 import Foundation
 import CoreData
 
-class GetAllQuotesOperation: NSOperation, NetworkOperationDelegate {
-    private var queue = NSOperationQueue()
-    private var parseQuotesOp: ParseQuotesOperation!
+class GetAllQuotesOperation: Operation, NetworkOperationDelegate {
+    private var queue: NSOperationQueue!
+    private var parseOp: ParseQuotesOperation!
     
-    // Init operation with context which will be used during downloaded data 
-    // parsing. From the context a child one will be created, after all is done 
-    // child and this passed will be saved.
-    // Completion handler is called by the last operation.
     init(context: NSManagedObjectContext, completionHandler: () -> Void) {
-        super.init()
-        name = "get.all.quotes"
+        super.init(finishInMain: false)
+        name = "get_all_quotes"
         
         // Create download, parse and finish operations
-        let request = NSMutableURLRequest.parseRequest("classes/Quote", method: "GET")
-        let downloadOp = NetworkOperation(request: request, delegate: self)
+        let downloadOp = NetworkOperation(request: request(), delegate: self)
         
-        parseQuotesOp = ParseQuotesOperation(context: context)
-        parseQuotesOp.addDependency(downloadOp)
+        parseOp = ParseQuotesOperation(context: context)
+        parseOp.addDependency(downloadOp)
         
-        let finishOp = NSBlockOperation(block: completionHandler)
-        finishOp.addDependency(parseQuotesOp)
+        let completionOp = NSBlockOperation(block: completionHandler)
+        completionOp.addDependency(parseOp)
         
-        queue.addOperations([downloadOp, parseQuotesOp, finishOp], waitUntilFinished: false)
+        let finishOp = NSBlockOperation(block: { self.finish() })
+        finishOp.addDependency(completionOp)
+        
+        queue = NSOperationQueue()
+        queue.maxConcurrentOperationCount = 1
+        queue.name = "get_all_quotes_q"
+        queue.addOperations([downloadOp, parseOp, completionOp, finishOp], waitUntilFinished: false)
+    }
+    
+    private func request() -> NSURLRequest {
+        return NSMutableURLRequest.parseRequest("classes/Quote", method: "GET")
     }
     
     // MARK: - NetworkOperationDelegate
-    // Delegate method that updates parsing operation with data to be parsed
     func networkOperation(operation: NetworkOperation, didFinishWithResult result: NetworkOperationResult) {
         if result.success {
             do {
-                parseQuotesOp.json = try NSJSONSerialization.JSONObjectWithData(result.data!, options: NSJSONReadingOptions.MutableLeaves) as? Dictionary<String, AnyObject>
+                parseOp.json = try NSJSONSerialization.JSONObjectWithData(result.data!, options: NSJSONReadingOptions.MutableLeaves) as? Dictionary<String, AnyObject>
             } catch {
                 queue.cancelAllOperations()
+                finish()
             }
         } else {
             queue.cancelAllOperations()
+            finish()
         }
     }
 }
