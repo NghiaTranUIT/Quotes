@@ -41,7 +41,7 @@ class Operation: NSOperation {
         
         willChangeValueForKey("isExecuting")
         _executing = true
-        didChangeValueForKey("isFinished")
+        didChangeValueForKey("isExecuting")
         // Call main, maybe other subclasses will want use it?
         // We have to call it manually when overriding `start`.
         main()
