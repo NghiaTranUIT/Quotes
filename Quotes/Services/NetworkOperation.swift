@@ -18,17 +18,18 @@ class NetworkOperation: Operation, NSURLConnectionDelegate, NSURLConnectionDataD
     private var delegate: NetworkOperationDelegate!
     
     init(request: NSURLRequest, delegate: NetworkOperationDelegate) {
-        super.init(startOnMainThread: true, finishInMain: false)
+        super.init(finishInMain: false)
         connection = NSURLConnection(request: request, delegate: self)
         self.delegate = delegate
         self.name = "network"
     }
     
     override func start() {
-        // Call super to start operation on main thread.
         // NSURLConnection must start on main thread.
-        super.start()
-        self.connection.start()
+        dispatch_async(dispatch_get_main_queue()) {
+            super.start()
+            self.connection.start()
+        }
     }
     
     override func cancel() {
