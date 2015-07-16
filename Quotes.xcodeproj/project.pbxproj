@@ -16,6 +16,7 @@
 		6D0970311B4EE524005C93F4 /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 6D0970051B4EDCB3005C93F4 /* Model.xcdatamodeld */; };
 		6D2BB5181B518DCA005E8B5F /* GetAllQuotesOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D2BB5171B518DCA005E8B5F /* GetAllQuotesOperation.swift */; };
 		6D2BB51A1B518F8E005E8B5F /* ParseQuotesOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D2BB5191B518F8E005E8B5F /* ParseQuotesOperation.swift */; };
+		6D37AB431B585C0C00B3D0DC /* AddQuoteViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D37AB421B585C0C00B3D0DC /* AddQuoteViewModel.swift */; };
 		6D409CF41B50278A00E3340E /* QuoteTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6D409CF31B50278A00E3340E /* QuoteTableViewCell.xib */; };
 		6D409CF61B50286300E3340E /* QuoteListBaseTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D409CF51B50286300E3340E /* QuoteListBaseTableViewController.swift */; };
 		6D67735C1B529B49002BBA2F /* Quote+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D67735A1B529B49002BBA2F /* Quote+CoreDataProperties.swift */; };
@@ -88,6 +89,7 @@
 		6D0970131B4EE3D8005C93F4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6D2BB5171B518DCA005E8B5F /* GetAllQuotesOperation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetAllQuotesOperation.swift; sourceTree = "<group>"; };
 		6D2BB5191B518F8E005E8B5F /* ParseQuotesOperation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParseQuotesOperation.swift; sourceTree = "<group>"; };
+		6D37AB421B585C0C00B3D0DC /* AddQuoteViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddQuoteViewModel.swift; sourceTree = "<group>"; };
 		6D409CF31B50278A00E3340E /* QuoteTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = QuoteTableViewCell.xib; sourceTree = "<group>"; };
 		6D409CF51B50286300E3340E /* QuoteListBaseTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuoteListBaseTableViewController.swift; sourceTree = "<group>"; };
 		6D67735A1B529B49002BBA2F /* Quote+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Quote+CoreDataProperties.swift"; path = "../Quote+CoreDataProperties.swift"; sourceTree = "<group>"; };
@@ -345,6 +347,7 @@
 			isa = PBXGroup;
 			children = (
 				6DFD48A91B4F934500E2A7A8 /* AddQuoteViewController.swift */,
+				6D37AB421B585C0C00B3D0DC /* AddQuoteViewModel.swift */,
 			);
 			name = "Add Quote";
 			sourceTree = "<group>";
@@ -545,6 +548,7 @@
 				6DD3E7241B4D9C3D0094CFA3 /* QuoteViewModel.swift in Sources */,
 				6DFD48A51B4F901100E2A7A8 /* Quote+CoreSpotlight.swift in Sources */,
 				6D2BB5181B518DCA005E8B5F /* GetAllQuotesOperation.swift in Sources */,
+				6D37AB431B585C0C00B3D0DC /* AddQuoteViewModel.swift in Sources */,
 				6DA8A6241B517C48003FB6DF /* ParseIntegration.swift in Sources */,
 				6DD3E70A1B4D927F0094CFA3 /* AppDelegate.swift in Sources */,
 				6D2BB51A1B518F8E005E8B5F /* ParseQuotesOperation.swift in Sources */,

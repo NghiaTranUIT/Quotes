@@ -16,6 +16,8 @@ class AddQuoteViewController: UIViewController, UITextViewDelegate, UITextFieldD
     @IBOutlet private var saveButton: UIBarButtonItem!
     @IBOutlet weak var bottomGuideConstraint: NSLayoutConstraint!
     
+    private var viewModel = AddQuoteViewModel()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         quoteContentTextView.text = ""
@@ -40,22 +42,16 @@ class AddQuoteViewController: UIViewController, UITextViewDelegate, UITextFieldD
         if let info = notification.userInfo as? Dictionary<String, AnyObject> {
             let keyboardSize = (info[UIKeyboardFrameBeginUserInfoKey] as! NSValue).CGRectValue().size
             let duration = (info[UIKeyboardAnimationDurationUserInfoKey] as! NSNumber).doubleValue
-            
             bottomGuideConstraint.constant = keyboardSize.height
-            UIView.animateWithDuration(duration, animations: { () -> Void in
-                self.view.layoutIfNeeded()
-            })
+            UIView.animateWithDuration(duration) { self.view.layoutIfNeeded() }
         }
     }
     
     func keyboardWillHide(notification: NSNotification) {
         if let info = notification.userInfo as? Dictionary<String, AnyObject> {
             let duration = (info[UIKeyboardAnimationDurationUserInfoKey] as! NSNumber).doubleValue
-            
             bottomGuideConstraint.constant = 0
-            UIView.animateWithDuration(duration, animations: { () -> Void in
-                self.view.layoutIfNeeded()
-            })
+            UIView.animateWithDuration(duration) { self.view.layoutIfNeeded() }
         }
     }
     
@@ -64,7 +60,9 @@ class AddQuoteViewController: UIViewController, UITextViewDelegate, UITextFieldD
     }
     
     private func updateSaveButton() {
-        saveButton.enabled = (quoteContentTextView.text != "") && (saidByTextField.text != "")
+        viewModel.contentText = quoteContentTextView.text
+        viewModel.saidByText = saidByTextField.text ?? ""
+        saveButton.enabled = viewModel.saveButtonEnabled
     }
     
     @IBAction func handleTap(sender: AnyObject) {
@@ -77,13 +75,9 @@ class AddQuoteViewController: UIViewController, UITextViewDelegate, UITextFieldD
     }
     
     @IBAction func savePressed(sender: AnyObject) {
-        let quote = Quote(content: quoteContentTextView.text, author: saidByTextField.text!, context: CoreDataStack.sharedInstance().mainContext)
-        do { try  CoreDataStack.sharedInstance().mainContext.save() } catch {}
-        
-        if #available(iOS 9.0, *) {
-            Quote.index([quote])
-        }
-        
+        viewModel.contentText = quoteContentTextView.text
+        viewModel.saidByText = saidByTextField.text!
+        viewModel.saveQuote(CoreDataStack.sharedInstance().mainContext)
         self.presentingViewController?.dismissViewControllerAnimated(true, completion: nil)
     }
     
