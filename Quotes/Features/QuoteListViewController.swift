@@ -25,8 +25,7 @@ class QuoteListViewController: QuoteListBaseTableViewController, UISearchBarDele
     private var resultsTableController: QuoteListBaseTableViewController!
     private var resultsUpdater = QuoteResultsUpdater()
     
-    private var searchControllerWasActive = false
-    private var searchControllerSearchFieldWasFirstResponder = false
+    private var viewModel = QuoteListViewModel()
     
     override var quotes: [Quote] {
         didSet { resultsUpdater.quotes = quotes }
@@ -70,17 +69,19 @@ class QuoteListViewController: QuoteListBaseTableViewController, UISearchBarDele
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
+        updateSearchControllerActiveState()
+    }
+    
+    private func updateSearchControllerActiveState() {
         // if search controller was active before, make it active
-        if searchControllerWasActive {
-            searchController.active = true
-            searchControllerWasActive = false
+        guard viewModel.searchControllerWasActive else { return }
+        searchController.active = true
+        viewModel.searchControllerWasActive = false
         
-            // if text field was active, re-activate it
-            if searchControllerSearchFieldWasFirstResponder {
-                searchController.searchBar.becomeFirstResponder()
-                searchControllerSearchFieldWasFirstResponder = false
-            }
-        }
+        // if text field was active, re-activate it
+        guard viewModel.searchControllerSearchFieldWasFirstResponder else { return }
+        searchController.searchBar.becomeFirstResponder()
+        viewModel.searchControllerSearchFieldWasFirstResponder = false
     }
     
     override func viewWillDisappear(animated: Bool) {
@@ -89,9 +90,7 @@ class QuoteListViewController: QuoteListBaseTableViewController, UISearchBarDele
     }
     
     func startUserActivity() {
-        let activity = NSUserActivity(activityType: ActivityType.QuotesList.rawValue)
-        activity.title = "Viewing Quotes List"
-        userActivity = activity
+        userActivity = viewModel.userActivity()
         userActivity?.becomeCurrent()
     }
     
@@ -103,7 +102,7 @@ class QuoteListViewController: QuoteListBaseTableViewController, UISearchBarDele
     }
     
     private func refreshAll() {
-        quotes = Quote.findAll(CoreDataStack.sharedInstance().mainContext)
+        quotes = viewModel.fetchAll(CoreDataStack.sharedInstance().mainContext)
         tableView.reloadData()
     }
     
