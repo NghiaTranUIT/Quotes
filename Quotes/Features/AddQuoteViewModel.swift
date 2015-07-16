@@ -9,7 +9,7 @@
 import Foundation
 import Model
 
-class AddQuoteViewModel {
+struct AddQuoteViewModel {
     var contentText: String = ""
     var saidByText: String = ""
     

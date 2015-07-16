@@ -9,7 +9,7 @@
 import Foundation
 import Model
 
-class QuoteViewModel {
+struct QuoteViewModel {
     let quote: Quote
     
     init(quote: Quote) {
